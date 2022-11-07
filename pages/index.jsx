@@ -2,9 +2,9 @@ import Head from "next/head";
 
 const Home = () => {
   return (
-    <div className='flex min-h-screen flex-col items-center justify-center py-2'>
+    <div className='container mx-auto px-10 mb-8'>
       <Head>
-        <title>Create Next App</title>
+        <title>My Blog</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <h1>Hello World</h1>
