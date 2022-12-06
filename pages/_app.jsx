@@ -1,12 +1,20 @@
+import { ThemeProvider } from "next-themes";
 import "tailwindcss/tailwind.css";
 import { Layout } from "../components";
 import "../styles/globals.scss";
+import { FeaturedPostsProvider } from "../context/featuredPostsData";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />;
-    </Layout>
+    <>
+      <FeaturedPostsProvider>
+        <ThemeProvider enableSystem={true} attribute='class'>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </FeaturedPostsProvider>
+    </>
   );
 }
 
