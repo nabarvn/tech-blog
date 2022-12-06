@@ -60,7 +60,7 @@ const PostDetails = ({ post }) => {
   };
 
   return (
-    <div className='bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8'>
+    <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg lg:p-8 pb-12 mb-8'>
       <div className='relative overflow-hidden shadow-md mb-6'>
         <img
           src={post.thumbnail.url}
@@ -81,12 +81,12 @@ const PostDetails = ({ post }) => {
               />
             </div>
             <div>
-              <p className='inline align-middle text-gray-700 ml-2 text-lg'>
+              <p className='inline align-middle text-gray-700 dark:text-night-teal ml-2 text-lg'>
                 {post.author.name}
               </p>
             </div>
           </div>
-          <div className='flex flex-wrap items-center font-md text-gray-700 mb-4 md:mb-0'>
+          <div className='flex flex-wrap items-center font-md text-gray-700 dark:text-night-teal mb-4 md:mb-0'>
             <div>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -110,7 +110,7 @@ const PostDetails = ({ post }) => {
             </div>
           </div>
         </div>
-        <h1 className='mb-8 text-3xl text-center font-semibold'>
+        <h1 className='mb-8 text-3xl text-center font-semibold dark:text-night-white'>
           {post.title}
         </h1>
         {post.content.raw.children.map((typeObj, index) => {
