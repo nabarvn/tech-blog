@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Dropdown } from ".";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 // const categories = [
@@ -27,8 +28,13 @@ const Navbar = () => {
             </Link>
           ))}
         </div> */}
-        <div className='self-center float-end'>
-          <ThemeSwitcher />
+        <div className='flex float-end'>
+          <div className='self-center hidden md:contents'>
+            <ThemeSwitcher />
+          </div>
+          <div className='self-center ml-2 md:hidden'>
+            <Dropdown />
+          </div>
         </div>
       </div>
     </div>

@@ -13,3 +13,4 @@ export { default as FeaturedPostsWidget } from "./FeaturedPostsWidget";
 export { default as CarouselViewer } from "./CarouselViewer";
 export { default as TagsWidget } from "./TagsWidget";
 export { default as ThemeSwitcher } from "./ThemeSwitcher";
+export { default as Dropdown } from "./Dropdown";
