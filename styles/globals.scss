@@ -17,7 +17,7 @@ body {
     //background: linear-gradient(to right bottom, #6d327c, #485DA6, #00a1ba, #01b18e, #32b37b);
     // background: #d3d3d3;
     // background-image: url("../public/bg.jpg");
-    background-color: #fafafa;
+    // background-color: #fafafa;
     position: fixed;
     left: 0;
     top: 0;
@@ -28,28 +28,37 @@ body {
   }
 }
 
+@layer base {
+  body {
+    @apply bg-light-gray dark:bg-night-black scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-900 dark:scrollbar-thumb-night-gray;
+  }
+}
+
+input[type="text"]:focus ~ .place-holder,
+input[type="text"]:not(:placeholder-shown) ~ .place-holder {
+  @apply text-blue-500 dark:text-night-blue not-italic font-semibold bg-white dark:bg-night-gray transform -translate-y-5 -translate-x-2 scale-75;
+}
+
+textarea:focus ~ .place-holder,
+textarea:not(:placeholder-shown) ~ .place-holder {
+  @apply text-blue-500 dark:text-night-blue not-italic font-semibold bg-white dark:bg-night-gray transform -translate-y-5 -translate-x-5 scale-75;
+}
+
 .text-shadow {
   text-shadow: 0px 2px 0px rgb(0 0 0 / 30%);
 }
 
-.adjacent-post {
-  & .arrow-btn {
-    transition: width 300ms ease;
-    width: 50px;
-  }
-  &:hover {
-    & .arrow-btn {
-      width: 60px;
-    }
-  }
-}
-
 .react-multi-carousel-list {
-  & .arrow-btn {
-    transition: width 300ms ease;
-    width: 50px;
-    &:hover {
-      width: 60px;
+  & .custom-list {
+    & .react-multi-carousel-dot {
+      & button {
+        @apply bg-white border-violet-900 dark:border-night-blue h-2 w-2;
+      }
+    }
+    & .react-multi-carousel-dot--active {
+      & button {
+        @apply transition ease-in-out duration-300 bg-violet-900 dark:bg-night-blue h-2.5 w-2.5;
+      }
     }
   }
 }
