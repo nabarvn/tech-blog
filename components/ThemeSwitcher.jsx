@@ -18,10 +18,10 @@ const ThemeSwitcher = () => {
       <div
         className={`cursor-pointer ${
           currentTheme != "dark" ? "hidden" : "none"
-        } bg-light-gray dark:bg-night-black hover:bg-gray-100 dark:hover:bg-night-gray transition duration-300 rounded-lg p-2`}
+        } bg-light-gray dark:bg-night-black hover:bg-gray-100 dark:hover:bg-night-gray transition duration-300 rounded-lg p-1.5 md:p-2`}
         onClick={() => setTheme("light")}
       >
-        <svg viewBox='0 0 24 24' fill='none' className='w-6 h-6'>
+        <svg viewBox='0 0 24 24' fill='none' className='w-4 h-4 md:w-6 md:h-6'>
           <path
             fillRule='evenodd'
             clipRule='evenodd'
@@ -43,7 +43,7 @@ const ThemeSwitcher = () => {
       <div
         className={`cursor-pointer ${
           currentTheme === "dark" ? "hidden" : "none"
-        } bg-light-gray dark:bg-night-black hover:bg-gray-100 dark:hover:bg-night-gray transition duration-300 rounded-lg p-2`}
+        } bg-light-gray dark:bg-night-black hover:bg-gray-100 dark:hover:bg-night-gray transition duration-300 rounded-lg p-1.5 md:p-2`}
         onClick={() => setTheme("dark")}
       >
         <svg
@@ -52,7 +52,7 @@ const ThemeSwitcher = () => {
           viewBox='0 0 24 24'
           strokeWidth={2}
           stroke='currentColor'
-          className='w-6 h-6 stroke-slate-400'
+          className='w-4 h-4 md:w-6 md:h-6 stroke-slate-400'
         >
           <path
             strokeLinecap='round'
