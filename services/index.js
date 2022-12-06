@@ -35,6 +35,10 @@ export const getPosts = async () => {
               name
               slug
             }
+            tags {
+              name
+              slug
+            }
           }
         }
       }
@@ -66,6 +70,10 @@ export const getPostDetails = async (slug) => {
         createdAt
         slug
         categories {
+          name
+          slug
+        }
+        tags {
           name
           slug
         }
@@ -143,6 +151,21 @@ export const getCategories = async () => {
   return result.categories;
 };
 
+export const getTags = async () => {
+  const query = gql`
+    query GetTags {
+      tags {
+        name
+        slug
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.tags;
+};
+
 export const getCategoryPosts = async (slug) => {
   const query = gql`
     query GetCategoryPosts($slug: String!) {
@@ -166,6 +189,51 @@ export const getCategoryPosts = async (slug) => {
               url
             }
             categories {
+              name
+              slug
+            }
+            tags {
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query, { slug });
+
+  return result.postsConnection.edges;
+};
+
+export const getTagPosts = async (slug) => {
+  const query = gql`
+    query GetTagPosts($slug: String!) {
+      postsConnection(where: { tags_some: { slug: $slug } }) {
+        edges {
+          cursor
+          node {
+            author {
+              bio
+              name
+              id
+              image {
+                url
+              }
+            }
+            createdAt
+            slug
+            title
+            excerpt
+            thumbnail {
+              url
+            }
+            categories {
+              name
+              slug
+            }
+            tags {
               name
               slug
             }
