@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
+    "@heroicons/react": "^2.0.13",
     "@tailwindcss/line-clamp": "^0.4.2",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
