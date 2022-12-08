@@ -28,6 +28,16 @@ body {
   }
 }
 
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+
 @layer base {
   body {
     @apply bg-light-gray dark:bg-night-black scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-900 dark:scrollbar-thumb-night-gray;
@@ -62,6 +72,10 @@ textarea:not(:placeholder-shown) ~ .place-holder {
     }
   }
 }
+
+// .error-content {
+//   min-height: calc(100vh - 153px);
+// }
 
 a {
   color: inherit;
