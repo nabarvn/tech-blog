@@ -101,7 +101,7 @@ const Dropdown = () => {
             className='inline-flex w-full justify-between text-sm text-gray-700 dark:text-night-white px-4 py-2'
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <span className='self-center'>Theme Switcher</span>
+            <span className='self-center'>Theme Switcher ➡️</span>
             <Menu.Button>
               <ThemeSwitcher />
             </Menu.Button>
