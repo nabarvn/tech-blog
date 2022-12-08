@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
 import NextNProgress from "nextjs-progressbar";
+import { Footer } from ".";
 
 const Layout = ({ children }) => {
   return (
@@ -13,6 +14,7 @@ const Layout = ({ children }) => {
       />
       <Navbar />
       {children}
+      <Footer />
     </>
   );
 };
