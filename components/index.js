@@ -14,3 +14,5 @@ export { default as CarouselViewer } from "./CarouselViewer";
 export { default as TagsWidget } from "./TagsWidget";
 export { default as ThemeSwitcher } from "./ThemeSwitcher";
 export { default as Dropdown } from "./Dropdown";
+export { default as ScrollToTop } from "./ScrollToTop";
+export { default as Footer } from "./Footer";
