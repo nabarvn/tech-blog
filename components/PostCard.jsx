@@ -12,7 +12,7 @@ const PostCard = ({ post }) => {
             className='absolute h-48 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg'
           />
         </div>
-        <h1 className='transition duration-300 text-center mb-8 cursor-pointer dark:text-night-white hover:text-blue-500 dark:hover:text-night-blue text-3xl lg:text-2xl font-semibold'>
+        <h1 className='transition duration-300 text-center mb-8 cursor-pointer dark:text-night-white hover:text-blue-500 dark:hover:text-blue-900 text-3xl lg:text-2xl font-semibold'>
           {/* <Link href={`/post/${post.slug}`}>{post.title}</Link> */}
           {post.title}
         </h1>
@@ -65,7 +65,7 @@ const PostCard = ({ post }) => {
         {post.tags.map((tag) => (
           <div key={tag.slug} className='text-center'>
             <Link href={`/tag/${tag.slug}`}>
-              <span className='inline-block ml-2 bg-blue-500 dark:bg-night-blue hover:bg-blue-900 dark:hover:bg-night-purple text-xs font-semibold rounded-full text-white px-2 py-1 cursor-pointer'>
+              <span className='inline-block ml-2 bg-blue-500 dark:bg-night-blue hover:bg-blue-900 dark:hover:bg-purple-900 text-xs font-semibold rounded-full text-white px-2 py-1 cursor-pointer'>
                 {tag.name}
               </span>
             </Link>
