@@ -5,6 +5,7 @@ import {
   PostsWidget,
   FeaturedPostsWidget,
   TagsWidget,
+  ScrollToTop,
 } from "../components";
 import FeaturedPosts from "../sections/FeaturedPosts";
 import { getPosts } from "../services";
@@ -34,6 +35,7 @@ const Home = ({ posts }) => {
           </div>
         </div>
       </div>
+      <ScrollToTop />
     </div>
   );
 };
