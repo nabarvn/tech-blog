@@ -12,6 +12,7 @@ export { default as Loader } from "./Loader";
 export { default as FeaturedPostsWidget } from "./FeaturedPostsWidget";
 export { default as CarouselViewer } from "./CarouselViewer";
 export { default as TagsWidget } from "./TagsWidget";
+export { default as Table } from "./Table";
 export { default as ThemeSwitcher } from "./ThemeSwitcher";
 export { default as Dropdown } from "./Dropdown";
 export { default as ScrollToTop } from "./ScrollToTop";
