@@ -214,7 +214,7 @@ const PostDetails = ({ post }) => {
             style={{
               listStyleType: "square",
             }}
-            className='ml-4 mb-8'
+            className='cursor-default ml-4 mb-8'
           >
             {obj.children.map((listItem, i) => {
               return (
@@ -301,7 +301,7 @@ const PostDetails = ({ post }) => {
             style={{
               listStyleType: "upper-roman",
             }}
-            className='ml-4 mb-8'
+            className='cursor-default ml-4 mb-8'
           >
             {obj.children.map((listItem, i) => {
               return (

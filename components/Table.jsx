@@ -20,7 +20,7 @@ const Table = ({ obj, index }) => {
                                   case "heading-three":
                                     return (
                                       <h3
-                                        key={index}
+                                        key={i}
                                         className='text-justify text-3xl font-semibold cursor-default'
                                       >
                                         {tableData.children.map((item, i) => {
@@ -247,7 +247,7 @@ const Table = ({ obj, index }) => {
                                   case "heading-four":
                                     return (
                                       <h4
-                                        key={index}
+                                        key={i}
                                         className='text-justify text-2xl font-semibold cursor-default'
                                       >
                                         {tableData.children.map((item, i) => {
@@ -701,7 +701,7 @@ const Table = ({ obj, index }) => {
                                   case "heading-six":
                                     return (
                                       <h6
-                                        key={index}
+                                        key={i}
                                         className='text-justify text-lg font-semibold cursor-default'
                                       >
                                         {tableData.children.map((item, i) => {
@@ -1010,7 +1010,7 @@ const Table = ({ obj, index }) => {
                                         style={{
                                           listStyleType: "square",
                                         }}
-                                        className='ml-4'
+                                        className='cursor-default ml-4'
                                       >
                                         {tableData.children.map(
                                           (listItem, i) => {
@@ -1152,7 +1152,7 @@ const Table = ({ obj, index }) => {
                                         style={{
                                           listStyleType: "upper-roman",
                                         }}
-                                        className='ml-4'
+                                        className='cursor-default ml-4'
                                       >
                                         {tableData.children.map(
                                           (listItem, i) => {
@@ -1293,6 +1293,618 @@ const Table = ({ obj, index }) => {
                                         {tableData.className === "thead" &&
                                           tableData.children.map((data) => {
                                             switch (data.type) {
+                                              case "heading-five":
+                                                return (
+                                                  <h5
+                                                    key={i}
+                                                    className='text-center text-xl font-semibold cursor-default'
+                                                  >
+                                                    {data.children.map(
+                                                      (item, i) => {
+                                                        if (
+                                                          item.type === "link"
+                                                        ) {
+                                                          return (
+                                                            <React.Fragment
+                                                              key={i}
+                                                            >
+                                                              <a
+                                                                href={item.href}
+                                                                className='text-blue-500 hover:text-blue-900 dark:text-night-blue dark:hover:text-blue-900'
+                                                                target={
+                                                                  obj.openInNewTab
+                                                                    ? "_blank"
+                                                                    : "_self"
+                                                                }
+                                                              >
+                                                                {item.children.map(
+                                                                  (item, i) => {
+                                                                    let styledText =
+                                                                      item.text;
+
+                                                                    if (
+                                                                      item.underline
+                                                                    ) {
+                                                                      if (
+                                                                        item.bold
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <u>
+                                                                              <b>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </b>
+                                                                            </u>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else if (
+                                                                        item.italic
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <u>
+                                                                              <em>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </em>
+                                                                            </u>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <u>
+                                                                              {
+                                                                                styledText
+                                                                              }
+                                                                            </u>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      }
+                                                                    }
+
+                                                                    if (
+                                                                      item.italic
+                                                                    ) {
+                                                                      if (
+                                                                        item.bold
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <em>
+                                                                              <b>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </b>
+                                                                            </em>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else if (
+                                                                        item.underline
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <em>
+                                                                              <u>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </u>
+                                                                            </em>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <em>
+                                                                              {
+                                                                                styledText
+                                                                              }
+                                                                            </em>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      }
+                                                                    }
+
+                                                                    if (
+                                                                      item.bold
+                                                                    ) {
+                                                                      if (
+                                                                        item.italic
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <b>
+                                                                              <em>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </em>
+                                                                            </b>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else if (
+                                                                        item.underline
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <b>
+                                                                              <u>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </u>
+                                                                            </b>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <b>
+                                                                              {
+                                                                                styledText
+                                                                              }
+                                                                            </b>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                )}
+                                                              </a>
+                                                            </React.Fragment>
+                                                          );
+                                                        }
+
+                                                        let styledText =
+                                                          item.text;
+
+                                                        if (item.underline) {
+                                                          if (item.italic) {
+                                                            return (
+                                                              <u key={i}>
+                                                                <em>
+                                                                  {styledText}
+                                                                </em>
+                                                              </u>
+                                                            );
+                                                          }
+
+                                                          if (item.bold) {
+                                                            return (
+                                                              <u key={i}>
+                                                                <b>
+                                                                  {styledText}
+                                                                </b>
+                                                              </u>
+                                                            );
+                                                          }
+
+                                                          return (
+                                                            <React.Fragment
+                                                              key={i}
+                                                            >
+                                                              <u>
+                                                                {styledText}
+                                                              </u>
+                                                            </React.Fragment>
+                                                          );
+                                                        }
+
+                                                        if (item.bold) {
+                                                          if (item.italic) {
+                                                            return (
+                                                              <b key={i}>
+                                                                <em>
+                                                                  {styledText}
+                                                                </em>
+                                                              </b>
+                                                            );
+                                                          }
+
+                                                          if (item.underline) {
+                                                            return (
+                                                              <b key={i}>
+                                                                <u>
+                                                                  {styledText}
+                                                                </u>
+                                                              </b>
+                                                            );
+                                                          }
+
+                                                          return (
+                                                            <React.Fragment
+                                                              key={i}
+                                                            >
+                                                              <b>
+                                                                {styledText}
+                                                              </b>
+                                                            </React.Fragment>
+                                                          );
+                                                        }
+
+                                                        if (item.italic) {
+                                                          if (item.bold) {
+                                                            return (
+                                                              <em key={i}>
+                                                                <b>
+                                                                  {styledText}
+                                                                </b>
+                                                              </em>
+                                                            );
+                                                          }
+
+                                                          if (item.underline) {
+                                                            return (
+                                                              <em key={i}>
+                                                                <u>
+                                                                  {styledText}
+                                                                </u>
+                                                              </em>
+                                                            );
+                                                          }
+
+                                                          return (
+                                                            <React.Fragment
+                                                              key={i}
+                                                            >
+                                                              <em>
+                                                                {styledText}
+                                                              </em>
+                                                            </React.Fragment>
+                                                          );
+                                                        }
+                                                      }
+                                                    )}
+                                                  </h5>
+                                                );
+
+                                              case "heading-six":
+                                                return (
+                                                  <h6
+                                                    key={i}
+                                                    className='text-center text-lg font-semibold cursor-default'
+                                                  >
+                                                    {data.children.map(
+                                                      (item, i) => {
+                                                        if (
+                                                          item.type === "link"
+                                                        ) {
+                                                          return (
+                                                            <React.Fragment
+                                                              key={i}
+                                                            >
+                                                              <a
+                                                                href={item.href}
+                                                                className='text-blue-500 hover:text-blue-900 dark:text-night-blue dark:hover:text-blue-900'
+                                                                target={
+                                                                  obj.openInNewTab
+                                                                    ? "_blank"
+                                                                    : "_self"
+                                                                }
+                                                              >
+                                                                {item.children.map(
+                                                                  (item, i) => {
+                                                                    let styledText =
+                                                                      item.text;
+
+                                                                    if (
+                                                                      item.underline
+                                                                    ) {
+                                                                      if (
+                                                                        item.bold
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <u>
+                                                                              <b>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </b>
+                                                                            </u>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else if (
+                                                                        item.italic
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <u>
+                                                                              <em>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </em>
+                                                                            </u>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <u>
+                                                                              {
+                                                                                styledText
+                                                                              }
+                                                                            </u>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      }
+                                                                    }
+
+                                                                    if (
+                                                                      item.italic
+                                                                    ) {
+                                                                      if (
+                                                                        item.bold
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <em>
+                                                                              <b>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </b>
+                                                                            </em>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else if (
+                                                                        item.underline
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <em>
+                                                                              <u>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </u>
+                                                                            </em>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <em>
+                                                                              {
+                                                                                styledText
+                                                                              }
+                                                                            </em>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      }
+                                                                    }
+
+                                                                    if (
+                                                                      item.bold
+                                                                    ) {
+                                                                      if (
+                                                                        item.italic
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <b>
+                                                                              <em>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </em>
+                                                                            </b>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else if (
+                                                                        item.underline
+                                                                      ) {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <b>
+                                                                              <u>
+                                                                                {
+                                                                                  styledText
+                                                                                }
+                                                                              </u>
+                                                                            </b>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      } else {
+                                                                        return (
+                                                                          <React.Fragment
+                                                                            key={
+                                                                              i
+                                                                            }
+                                                                          >
+                                                                            <b>
+                                                                              {
+                                                                                styledText
+                                                                              }
+                                                                            </b>
+                                                                          </React.Fragment>
+                                                                        );
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                )}
+                                                              </a>
+                                                            </React.Fragment>
+                                                          );
+                                                        }
+
+                                                        let styledText =
+                                                          item.text;
+
+                                                        if (item.underline) {
+                                                          if (item.italic) {
+                                                            return (
+                                                              <u key={i}>
+                                                                <em>
+                                                                  {styledText}
+                                                                </em>
+                                                              </u>
+                                                            );
+                                                          }
+
+                                                          if (item.bold) {
+                                                            return (
+                                                              <u key={i}>
+                                                                <b>
+                                                                  {styledText}
+                                                                </b>
+                                                              </u>
+                                                            );
+                                                          }
+
+                                                          return (
+                                                            <React.Fragment
+                                                              key={i}
+                                                            >
+                                                              <u>
+                                                                {styledText}
+                                                              </u>
+                                                            </React.Fragment>
+                                                          );
+                                                        }
+
+                                                        if (item.bold) {
+                                                          if (item.italic) {
+                                                            return (
+                                                              <b key={i}>
+                                                                <em>
+                                                                  {styledText}
+                                                                </em>
+                                                              </b>
+                                                            );
+                                                          }
+
+                                                          if (item.underline) {
+                                                            return (
+                                                              <b key={i}>
+                                                                <u>
+                                                                  {styledText}
+                                                                </u>
+                                                              </b>
+                                                            );
+                                                          }
+
+                                                          return (
+                                                            <React.Fragment
+                                                              key={i}
+                                                            >
+                                                              <b>
+                                                                {styledText}
+                                                              </b>
+                                                            </React.Fragment>
+                                                          );
+                                                        }
+
+                                                        if (item.italic) {
+                                                          if (item.bold) {
+                                                            return (
+                                                              <em key={i}>
+                                                                <b>
+                                                                  {styledText}
+                                                                </b>
+                                                              </em>
+                                                            );
+                                                          }
+
+                                                          if (item.underline) {
+                                                            return (
+                                                              <em key={i}>
+                                                                <u>
+                                                                  {styledText}
+                                                                </u>
+                                                              </em>
+                                                            );
+                                                          }
+
+                                                          return (
+                                                            <React.Fragment
+                                                              key={i}
+                                                            >
+                                                              <em>
+                                                                {styledText}
+                                                              </em>
+                                                            </React.Fragment>
+                                                          );
+                                                        }
+                                                      }
+                                                    )}
+                                                  </h6>
+                                                );
+
                                               case "paragraph":
                                                 return (
                                                   <p
