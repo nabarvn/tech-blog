@@ -30,7 +30,7 @@ const ScrollToTop = () => {
       <button
         type='button'
         onClick={scrollToTop}
-        title='Scroll To Top'
+        title='Scroll to Top'
         className={`${
           isVisible ? "opacity-100" : "opacity-0"
         } inline-flex items-center p-2 rounded-lg shadow-sm bg-blue-500 hover:bg-blue-900 dark:bg-night-blue dark:hover:bg-blue-900 text-white dark:text-night-white focus:outline-none transition duration-300`}
