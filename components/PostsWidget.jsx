@@ -20,7 +20,7 @@ const PostsWidget = ({ slug, categories }) => {
     <>
       {widgetPosts.length > 0 && (
         <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 lg:p-6 mb-8'>
-          <h3 className='text-xl lg:text-lg mb-8 lg:mb-6 font-semibold dark:text-night-white border-b pb-4'>
+          <h3 className='text-xl lg:text-lg mb-8 lg:mb-6 font-semibold cursor-default dark:text-night-white border-b pb-4'>
             {slug ? "Similar Articles" : "Latest Articles"}
           </h3>
           {widgetPosts.map((post) => (
@@ -33,7 +33,7 @@ const PostsWidget = ({ slug, categories }) => {
                 />
               </div>
               <div className='flex-grow ml-4'>
-                <p className='text-gray-700 dark:text-night-teal font-xs lg:text-xs'>
+                <p className='text-gray-700 dark:text-night-teal font-xs cursor-default lg:text-xs'>
                   {moment(post.createdAt).format("MMM DD, YYYY")}
                 </p>
                 <Link

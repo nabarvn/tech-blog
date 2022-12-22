@@ -13,8 +13,8 @@ const Author = ({ author }) => {
           src={author.image.url}
         />
       </div>
-      <h3 className='my-4 text-xl font-bold'>{author.name}</h3>
-      <p className='text-lg'>{author.bio}</p>
+      <h3 className='my-4 text-xl cursor-default font-bold'>{author.name}</h3>
+      <p className='cursor-default text-lg'>{author.bio}</p>
     </div>
   );
 };

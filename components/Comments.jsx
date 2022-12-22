@@ -14,7 +14,7 @@ const Comments = ({ slug }) => {
     <>
       {comments.length > 0 && (
         <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 pb-12 mb-8'>
-          <h3 className='text-xl mb-8 font-semibold dark:text-night-white border-b pb-4'>
+          <h3 className='text-xl mb-4 font-semibold cursor-default dark:text-night-white border-b pb-4'>
             {comments.length > 1
               ? `${comments.length} Comments`
               : `${comments.length} Comment`}
@@ -24,13 +24,13 @@ const Comments = ({ slug }) => {
               key={comment.createdAt}
               className='border-b border-gray-100 mb-4 pb-4'
             >
-              <p className='mb-4'>
+              <p className='cursor-default mb-4'>
                 <span className='font-semibold dark:text-night-white'>
                   {comment.name}
                 </span>
                 {` on ${moment(comment.createdAt).format("MMM DD, YYYY")}`}
               </p>
-              <p className='whitespace-pre-line text-gray-700 dark:text-gray-300 w-full'>
+              <p className='whitespace-pre-line cursor-default text-gray-700 dark:text-gray-300 w-full'>
                 {parse(comment.comment)}
               </p>
             </div>

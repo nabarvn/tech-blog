@@ -53,7 +53,7 @@ const CommentForm = ({ slug }) => {
 
   return (
     <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 pb-12 mb-8'>
-      <h3 className='text-xl mb-8 font-semibold dark:text-night-white border-b pb-4'>
+      <h3 className='text-xl mb-8 font-semibold cursor-default dark:text-night-white border-b pb-4'>
         Say gm?
       </h3>
       <div className='grid grid-cols-1 gap-4 mb-4'>
@@ -118,7 +118,7 @@ const CommentForm = ({ slug }) => {
       {error && (
         <p className='text-xs text-red-500'>All fields are required.</p>
       )}
-      <div className='mt-8'>
+      <div className='mt-8 pb-2'>
         <button
           type='button'
           onClick={handleSubmit}
@@ -127,7 +127,7 @@ const CommentForm = ({ slug }) => {
           Submit
         </button>
         {showSuccessMessage && (
-          <span className='text-sm float-left md:float-right font-semibold mt-3 text-green-500 dark:text-night-teal'>
+          <span className='text-sm float-left md:float-right font-semibold text-green-500 dark:text-night-teal mt-3'>
             Comment submitted for review.
           </span>
         )}

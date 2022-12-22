@@ -11,7 +11,7 @@ const TagsWidget = () => {
 
   return (
     <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 lg:p-6 mb-8'>
-      <h3 className='text-xl lg:text-lg mb-8 lg:mb-6 font-semibold dark:text-night-white border-b pb-4'>
+      <h3 className='text-xl lg:text-lg mb-8 lg:mb-6 font-semibold cursor-default dark:text-night-white border-b pb-4'>
         Tags
       </h3>
       <div className='flex flex-wrap'>
