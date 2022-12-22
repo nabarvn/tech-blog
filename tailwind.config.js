@@ -17,8 +17,15 @@ module.exports = {
         "night-purple": "#3B2FCF",
         "night-blue": "#4F51AF",
         "night-white": "#FFFFFF",
+        "code-block": "#011627",
       },
     },
   },
-  plugins: [require("@tailwindcss/line-clamp"), require("tailwind-scrollbar")],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    require("tailwind-scrollbar")({ nocompatible: true }),
+  ],
+  variants: {
+    // scrollbar: ["rounded"], -> deprecated
+  },
 };
