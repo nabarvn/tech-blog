@@ -1,8 +1,11 @@
 import { ThemeProvider } from "next-themes";
-import "tailwindcss/tailwind.css";
 import { Layout } from "../components";
-import "../styles/globals.scss";
 import { FeaturedPostsProvider } from "../context/featuredPostsData";
+
+import "../styles/globals.scss";
+import "tailwindcss/tailwind.css";
+import "../styles/nightOwl.scss";
+import "../styles/reactToastify.scss";
 
 function MyApp({ Component, pageProps }) {
   return (
