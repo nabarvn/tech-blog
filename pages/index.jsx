@@ -15,8 +15,8 @@ const Home = ({ posts }) => {
   return (
     <div className='container mx-auto px-10 mb-8'>
       <Head>
-        <title>My Blog</title>
-        <link rel='icon' href='/favicon.ico' />
+        <title>Nabarun</title>
+        <link rel='icon' href='/nabarun.png' />
       </Head>
       <FeaturedPosts />
       <div className='grid grid-cols-1 md:grid-cols-12 gap-12'>

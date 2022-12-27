@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { getTags, getTagPosts } from "../../services";
 
 import {
@@ -17,6 +18,10 @@ const TagPosts = ({ posts }) => {
 
   return (
     <div className='container mx-auto px-10 mb-8'>
+      <Head>
+        <title>Nabarun</title>
+        <link rel='icon' href='/nabarun.png' />
+      </Head>
       <div className='grid grid-cols-1 md:grid-cols-12 gap-12'>
         <div className='lg:grid lg:grid-cols-8 lg:gap-7 col-span-1 md:col-span-6 lg:col-span-9'>
           {posts.map((post, index) => (

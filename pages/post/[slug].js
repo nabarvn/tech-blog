@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -23,6 +24,10 @@ const Post = ({ post }) => {
 
   return (
     <div className='container mx-auto px-10 mb-8'>
+      <Head>
+        <title>Nabarun</title>
+        <link rel='icon' href='/nabarun.png' />
+      </Head>
       <div className='mb-2 ml-2'>
         <Link
           href='/'
