@@ -28,8 +28,8 @@ const Dropdown = () => {
       className='relative inline-block text-left'
     >
       <div onClick={() => setMenuOpen(!menuOpen)}>
-        <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 dark:border-night-gray bg-light-gray dark:bg-night-gray p-1 text-sm font-medium text-gray-700 dark:text-night-white shadow-sm focus:outline-none'>
-          <ChevronDownIcon className='h-5 w-5' aria-hidden='true' />
+        <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 dark:border-night-gray bg-light-gray dark:bg-night-gray p-1 text-md font-medium text-gray-700 dark:text-night-white shadow-sm focus:outline-none'>
+          <ChevronDownIcon className='h-6 w-6' aria-hidden='true' />
         </Menu.Button>
       </div>
 
@@ -56,7 +56,7 @@ const Dropdown = () => {
                     active
                       ? "bg-gray-100 dark:bg-night-gray text-gray-900 dark:text-night-teal"
                       : "text-gray-700 dark:text-night-white",
-                    "block px-4 py-2 text-sm"
+                    "block px-4 py-2 text-md"
                   )}
                   onClick={() => setMenuOpen(!menuOpen)}
                 >
@@ -72,7 +72,7 @@ const Dropdown = () => {
                     active
                       ? "bg-gray-100 dark:bg-night-gray text-gray-900 dark:text-night-teal"
                       : "text-gray-700 dark:text-night-white",
-                    "block px-4 py-2 text-sm"
+                    "block px-4 py-2 text-md"
                   )}
                   onClick={() => setMenuOpen(!menuOpen)}
                 >
@@ -88,7 +88,7 @@ const Dropdown = () => {
                     active
                       ? "bg-gray-100 dark:bg-night-gray text-gray-900 dark:text-night-teal"
                       : "text-gray-700 dark:text-night-white",
-                    "block px-4 py-2 text-sm"
+                    "block px-4 py-2 text-md"
                   )}
                   onClick={() => setMenuOpen(!menuOpen)}
                 >
@@ -98,7 +98,7 @@ const Dropdown = () => {
             </Menu.Item>
           </div>
           <div
-            className='inline-flex w-full justify-between text-sm text-gray-700 dark:text-night-white px-4 py-2'
+            className='inline-flex w-full justify-between text-md text-gray-700 dark:text-night-white px-4 py-2'
             onClick={() => setMenuOpen(!menuOpen)}
           >
             <span className='self-center'>Theme Switcher ➡️</span>
