@@ -1,5 +1,6 @@
 import { ArrowUpIcon } from "@heroicons/react/20/solid";
 import { useState, useEffect } from "react";
+import { Tooltip } from "react-tooltip";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,12 +28,18 @@ const ScrollToTop = () => {
 
   return (
     <div className='fixed bottom-7 right-7'>
+      <Tooltip
+        anchorId='scroll-to-top'
+        content='Scroll to Top'
+        place='top'
+        className={`${!isVisible && "hidden"}`}
+      />
       <button
+        id='scroll-to-top'
         type='button'
         onClick={scrollToTop}
-        title='Scroll to Top'
         className={`${
-          isVisible ? "opacity-100" : "opacity-0"
+          !isVisible && "hidden"
         } inline-flex items-center p-2 rounded-lg shadow-sm bg-blue-500 hover:bg-blue-900 dark:bg-night-blue dark:hover:bg-blue-900 text-white dark:text-night-white focus:outline-none transition duration-300`}
       >
         <ArrowUpIcon className='h-4 w-4' aria-hidden='true' />

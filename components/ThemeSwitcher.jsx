@@ -1,5 +1,6 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { Tooltip } from "react-tooltip";
 
 const ThemeSwitcher = () => {
   const { systemTheme, theme, setTheme } = useTheme();
@@ -15,7 +16,13 @@ const ThemeSwitcher = () => {
 
   return (
     <>
+      <Tooltip
+        anchorId='theme-switcher-light'
+        content='Light Mode'
+        place='bottom'
+      />
       <div
+        id='theme-switcher-light'
         className={`cursor-pointer ${
           currentTheme != "dark" ? "hidden" : "none"
         } bg-light-gray dark:bg-night-black hover:bg-gray-100 dark:hover:bg-night-gray transition duration-300 rounded-lg p-1.5 md:p-2`}
@@ -40,7 +47,14 @@ const ThemeSwitcher = () => {
           ></path>
         </svg>
       </div>
+
+      <Tooltip
+        anchorId='theme-switcher-dark'
+        content='Dark Mode'
+        place='bottom'
+      />
       <div
+        id='theme-switcher-dark'
         className={`cursor-pointer ${
           currentTheme === "dark" ? "hidden" : "none"
         } bg-light-gray dark:bg-night-black hover:bg-gray-100 dark:hover:bg-night-gray transition duration-300 rounded-lg p-1.5 md:p-2`}

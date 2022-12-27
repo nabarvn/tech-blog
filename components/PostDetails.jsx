@@ -1,7 +1,12 @@
-import { DocumentDuplicateIcon } from "@heroicons/react/20/solid";
+import {
+  ClipboardDocumentCheckIcon,
+  DocumentDuplicateIcon,
+} from "@heroicons/react/20/solid";
+
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import moment from "moment";
+import { Tooltip } from "react-tooltip";
 
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { ToastContainer, toast } from "react-toastify";
@@ -41,10 +46,10 @@ const PostDetails = ({ post }) => {
     hljs.highlightAll();
   }, []);
 
-  const successToast = () =>
+  const successToast = () => {
     toast.success("Copied Successfully!", {
       position: "bottom-center",
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -52,6 +57,7 @@ const PostDetails = ({ post }) => {
       progress: undefined,
       theme,
     });
+  };
 
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
@@ -167,9 +173,25 @@ const PostDetails = ({ post }) => {
 
       case "code-block":
         return (
-          <div key={index} className='relative'>
+          <div key={index} className='relative group'>
+            <Tooltip
+              anchorId={index}
+              content='Copy to Clipboard'
+              place='bottom'
+              className='dark:bg-teal-900 dark:text-night-teal'
+            />
             {modifiedText.map((item, i) => {
+              const [copied, setCopied] = useState(false);
               const snippetCopy = item;
+
+              const copySuccess = () => {
+                setCopied(true);
+
+                setTimeout(() => {
+                  setCopied(false);
+                }, 3000);
+              };
+
               return (
                 <React.Fragment key={i}>
                   <div className='border-2 bg-code-block text-night-white rounded-lg p-3 pt-2 mb-8'>
@@ -179,13 +201,23 @@ const PostDetails = ({ post }) => {
                       </code>
                     </pre>
                   </div>
+
                   <CopyToClipboard text={snippetCopy} onCopy={successToast}>
                     <button
-                      title='Copy to Clipboard'
-                      className='absolute top-2 right-2 hover:bg-[#1d3b53fc] rounded-lg p-1'
+                      id={index}
+                      className='absolute opacity-0 top-2 right-2 hover:bg-[#1d3b53fc] transition-opacity duration-300 group-hover:opacity-100 rounded-lg p-1'
+                      onClick={copySuccess}
                     >
                       <DocumentDuplicateIcon
-                        className='h-5 w-5 text-night-teal'
+                        className={`${
+                          copied && "hidden"
+                        } h-5 w-5 text-night-teal`}
+                        aria-hidden='false'
+                      />
+                      <ClipboardDocumentCheckIcon
+                        className={`${
+                          !copied && "hidden"
+                        } h-5 w-5 text-night-teal`}
                         aria-hidden='false'
                       />
                     </button>
