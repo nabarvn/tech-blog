@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-
 import { getTags, getTagPosts } from "../../services";
+
 import {
   PostCard,
   CategoriesWidget,
@@ -50,6 +50,7 @@ export async function getStaticProps({ params }) {
 // The HTML is generated at build time and will be reused on each request.
 export async function getStaticPaths() {
   const categories = await getTags();
+
   return {
     paths: categories.map(({ slug }) => ({ params: { slug } })),
     fallback: true,

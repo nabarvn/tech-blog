@@ -1,4 +1,5 @@
 import Head from "next/head";
+
 import {
   PostCard,
   CategoriesWidget,
@@ -6,6 +7,7 @@ import {
   FeaturedPostsWidget,
   TagsWidget,
 } from "../components";
+
 import FeaturedPosts from "../sections/FeaturedPosts";
 import { getPosts } from "../services";
 

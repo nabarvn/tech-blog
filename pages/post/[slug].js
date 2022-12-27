@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+
 import {
   Author,
   CategoriesWidget,
@@ -10,6 +11,7 @@ import {
   PostsWidget,
   TagsWidget,
 } from "../../components";
+
 import { getPostDetails, getPosts } from "../../services";
 
 const Post = ({ post }) => {
