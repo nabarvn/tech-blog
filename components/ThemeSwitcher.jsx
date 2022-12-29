@@ -18,7 +18,7 @@ const ThemeSwitcher = () => {
     <>
       <Tooltip
         anchorId='theme-switcher-light'
-        content='Light Mode'
+        content='Theme Switcher'
         place='bottom'
       />
       <div
@@ -50,7 +50,7 @@ const ThemeSwitcher = () => {
 
       <Tooltip
         anchorId='theme-switcher-dark'
-        content='Dark Mode'
+        content='Theme Switcher'
         place='bottom'
       />
       <div
