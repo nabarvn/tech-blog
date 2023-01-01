@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { submitComment } from "../services";
+import { ToastContainer, toast } from "react-toastify";
+import { useTheme } from "next-themes";
 
 const CommentForm = ({ slug }) => {
   const [error, setError] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const { theme } = useTheme();
 
   const commentRef = useRef();
   const nameRef = useRef();
@@ -17,6 +20,17 @@ const CommentForm = ({ slug }) => {
 
   const handleSubmit = () => {
     setError(false);
+
+    toast.success("Process Initiated...", {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme,
+    });
 
     const { value: comment } = commentRef.current;
     const { value: name } = nameRef.current;
@@ -133,6 +147,18 @@ const CommentForm = ({ slug }) => {
           </span>
         )}
       </div>
+      <ToastContainer
+        position='bottom-center'
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme
+      />
     </div>
   );
 };
