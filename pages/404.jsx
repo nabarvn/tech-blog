@@ -3,7 +3,10 @@ import Link from "next/link";
 
 const ErrorPage = () => {
   return (
-    <div className='flex flex-col m-auto justify-center items-center error-content'>
+    <div
+      id='layout-child'
+      className='flex flex-col m-auto justify-center items-center error-content'
+    >
       <Head>
         <title>Nabarun</title>
         <link rel='icon' href='/nabarun.png' />

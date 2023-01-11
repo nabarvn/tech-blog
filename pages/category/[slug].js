@@ -17,7 +17,7 @@ const CategoryPosts = ({ posts }) => {
   }
 
   return (
-    <div className='container mx-auto px-10 mb-8'>
+    <div id='layout-child' className='container mx-auto px-10 mb-8'>
       <Head>
         <title>Nabarun</title>
         <link rel='icon' href='/nabarun.png' />
