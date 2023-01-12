@@ -21,16 +21,17 @@ const CommentForm = ({ slug }) => {
   const handleSubmit = () => {
     setError(false);
 
-    toast.success("Process Initiated...", {
-      position: "bottom-center",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme,
-    });
+    !error &&
+      toast.success("Process Initiated...", {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme,
+      });
 
     const { value: comment } = commentRef.current;
     const { value: name } = nameRef.current;
