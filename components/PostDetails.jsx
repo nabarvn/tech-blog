@@ -80,7 +80,7 @@ const PostDetails = ({ post }) => {
           <a
             key={index}
             href={obj.href}
-            className='text-blue-500 hover:text-blue-900 dark:text-night-blue dark:hover:text-blue-900'
+            className='text-blue-500 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-700'
             target={obj.openInNewTab ? "_blank" : "_self"}
           >
             {obj.children.map((item, i) => {

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const PostCard = ({ post }) => {
   return (
-    <div className='bg-white dark:bg-night-gray shadow-lg dark:shadow-md hover:shadow-2xl dark:hover:shadow-night-teal rounded-lg p-0 lg:p-5 pb-9 lg:pb-3 mb-8 hover:cursor-pointer'>
+    <div className='bg-white dark:bg-night-gray shadow-lg group dark:shadow-md hover:shadow-2xl dark:hover:shadow-night-teal rounded-lg p-0 lg:p-5 pb-9 lg:pb-3 mb-8 hover:cursor-pointer'>
       <Link href={`/post/${post.slug}`}>
         <div className='relative overflow-hidden md:shadow-md pb-48 mb-8'>
           <img
@@ -12,7 +12,7 @@ const PostCard = ({ post }) => {
             className='absolute h-48 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg'
           />
         </div>
-        <h1 className='transition duration-300 text-center mb-8 cursor-pointer dark:text-night-white hover:text-blue-500 dark:hover:text-blue-900 text-3xl lg:text-2xl font-semibold'>
+        <h1 className='transition duration-300 text-center mb-8 cursor-pointer dark:text-night-white hover:text-blue-500 dark:group-hover:text-night-teal text-3xl lg:text-2xl font-semibold'>
           {/* <Link href={`/post/${post.slug}`}>{post.title}</Link> */}
           {post.title}
         </h1>

@@ -27,7 +27,7 @@ const ScrollToTop = () => {
   }, []);
 
   return (
-    <div className='fixed bottom-7 right-7'>
+    <div className='fixed bottom-14 right-7'>
       <Tooltip
         anchorId='scroll-to-top'
         content='Scroll to Top'
@@ -42,7 +42,7 @@ const ScrollToTop = () => {
           !isVisible && "hidden"
         } inline-flex items-center p-2 rounded-lg shadow-sm bg-blue-500 hover:bg-blue-900 dark:bg-night-blue dark:hover:bg-blue-900 text-white dark:text-night-white focus:outline-none transition duration-300`}
       >
-        <ArrowUpIcon className='h-4 w-4' aria-hidden='true' />
+        <ArrowUpIcon className='h-5 w-5' aria-hidden='true' />
       </button>
     </div>
   );

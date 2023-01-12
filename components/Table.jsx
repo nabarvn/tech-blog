@@ -29,7 +29,7 @@ const Table = ({ obj, index }) => {
                                               <React.Fragment key={i}>
                                                 <a
                                                   href={item.href}
-                                                  className='text-blue-500 hover:text-blue-900 dark:text-night-blue dark:hover:text-blue-900'
+                                                  className='text-blue-500 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-700'
                                                   target={
                                                     obj.openInNewTab
                                                       ? "_blank"
@@ -256,7 +256,7 @@ const Table = ({ obj, index }) => {
                                               <React.Fragment key={i}>
                                                 <a
                                                   href={item.href}
-                                                  className='text-blue-500 hover:text-blue-900 dark:text-night-blue dark:hover:text-blue-900'
+                                                  className='text-blue-500 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-700'
                                                   target={
                                                     obj.openInNewTab
                                                       ? "_blank"
@@ -483,7 +483,7 @@ const Table = ({ obj, index }) => {
                                               <React.Fragment key={i}>
                                                 <a
                                                   href={item.href}
-                                                  className='text-blue-500 hover:text-blue-900 dark:text-night-blue dark:hover:text-blue-900'
+                                                  className='text-blue-500 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-700'
                                                   target={
                                                     obj.openInNewTab
                                                       ? "_blank"
@@ -710,7 +710,7 @@ const Table = ({ obj, index }) => {
                                               <React.Fragment key={i}>
                                                 <a
                                                   href={item.href}
-                                                  className='text-blue-500 hover:text-blue-900 dark:text-night-blue dark:hover:text-blue-900'
+                                                  className='text-blue-500 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-700'
                                                   target={
                                                     obj.openInNewTab
                                                       ? "_blank"
@@ -1310,7 +1310,7 @@ const Table = ({ obj, index }) => {
                                                             >
                                                               <a
                                                                 href={item.href}
-                                                                className='text-blue-500 hover:text-blue-900 dark:text-night-blue dark:hover:text-blue-900'
+                                                                className='text-blue-500 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-700'
                                                                 target={
                                                                   obj.openInNewTab
                                                                     ? "_blank"
@@ -1616,7 +1616,7 @@ const Table = ({ obj, index }) => {
                                                             >
                                                               <a
                                                                 href={item.href}
-                                                                className='text-blue-500 hover:text-blue-900 dark:text-night-blue dark:hover:text-blue-900'
+                                                                className='text-blue-500 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-700'
                                                                 target={
                                                                   obj.openInNewTab
                                                                     ? "_blank"
@@ -1922,7 +1922,7 @@ const Table = ({ obj, index }) => {
                                                             >
                                                               <a
                                                                 href={item.href}
-                                                                className='text-blue-500 hover:text-blue-900 dark:text-night-blue dark:hover:text-blue-900'
+                                                                className='text-blue-500 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-700'
                                                                 target={
                                                                   obj.openInNewTab
                                                                     ? "_blank"

@@ -25,20 +25,20 @@ const PostsWidget = ({ slug, categories }) => {
           </h3>
           {widgetPosts.map((post) => (
             <div key={post.title} className='flex items-center w-full mb-4'>
-              <div className='w-16 flex-none'>
+              <div className='flex-none w-20 lg:w-16'>
                 <img
                   alt={post.title}
-                  className='align-middle rounded-full h-10 w-3/4 lg:h-7'
+                  className='align-middle rounded-full h-10 w-3/4 lg:h-9'
                   src={post.thumbnail.url}
                 />
               </div>
-              <div className='flex-grow ml-4'>
+              <div className='flex-grow ml-2 md:ml-4'>
                 <p className='text-gray-700 dark:text-night-teal font-xs cursor-default lg:text-xs'>
                   {moment(post.createdAt).format("MMM DD, YYYY")}
                 </p>
                 <Link
                   href={`/post/${post.slug}`}
-                  className='text-md lg:text-sm transition duration-300 cursor-pointer dark:text-gray-300 hover:text-blue-500 dark:hover:text-night-blue'
+                  className='lg:text-sm font-semibold transition duration-300 cursor-pointer dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-300'
                 >
                   {post.title}
                 </Link>
