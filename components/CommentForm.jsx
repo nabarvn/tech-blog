@@ -150,7 +150,7 @@ const CommentForm = ({ slug }) => {
           </span>
         )}
         {error && (
-          <span className='text-sm float-left md:float-right font-semibold text-red-500 mt-6 md:mt-3'>
+          <span className='text-sm float-left md:float-right font-semibold text-red-500 mt-9 md:mt-3'>
             All fields are required.
           </span>
         )}
