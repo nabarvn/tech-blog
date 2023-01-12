@@ -21,18 +21,6 @@ const CommentForm = ({ slug }) => {
   const handleSubmit = () => {
     setError(false);
 
-    !error &&
-      toast.success("Process Initiated...", {
-        position: "bottom-center",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme,
-      });
-
     const { value: comment } = commentRef.current;
     const { value: name } = nameRef.current;
     const { value: email } = emailRef.current;
@@ -40,6 +28,11 @@ const CommentForm = ({ slug }) => {
 
     if (!comment || !name || !email) {
       setError(true);
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+
       return;
     }
 
@@ -58,6 +51,18 @@ const CommentForm = ({ slug }) => {
       window.localStorage.removeItem("email", email);
     }
 
+    !error &&
+      toast.success("Process Initiated...", {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme,
+      });
+
     submitComment(commentObj).then(() => {
       setShowSuccessMessage(true);
 
@@ -68,7 +73,7 @@ const CommentForm = ({ slug }) => {
   };
 
   return (
-    <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 pb-12 mb-8'>
+    <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 pb-9 md:pb-5 mb-8'>
       <h3 className='text-xl mb-8 font-semibold cursor-default dark:text-night-white border-b pb-4'>
         Say gm?
       </h3>
@@ -131,9 +136,6 @@ const CommentForm = ({ slug }) => {
           </label>
         </div>
       </div>
-      {error && (
-        <p className='text-xs text-red-500'>All fields are required.</p>
-      )}
       <div className='mt-8 pb-2'>
         <button
           type='button'
@@ -145,6 +147,11 @@ const CommentForm = ({ slug }) => {
         {showSuccessMessage && (
           <span className='text-sm float-left md:float-right font-semibold text-green-500 dark:text-night-teal mt-3'>
             Comment submitted for review.
+          </span>
+        )}
+        {error && (
+          <span className='text-sm float-left md:float-right font-semibold text-red-500 mt-3'>
+            All fields are required.
           </span>
         )}
       </div>
