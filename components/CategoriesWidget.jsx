@@ -11,13 +11,13 @@ const CategoriesWidget = () => {
 
   return (
     <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 lg:p-6 mb-8'>
-      <h3 className='text-xl lg:text-lg mb-8 lg:mb-6 font-semibold cursor-default dark:text-night-white border-b pb-4'>
+      <h3 className='text-xl mb-8 lg:mb-6 font-semibold cursor-default dark:text-night-white border-b pb-4'>
         Categories
       </h3>
       {categories.map((category) => (
         <div
           key={category.slug}
-          className='lg:text-sm font-semibold transition duration-300 dark:text-gray-300 pb-3 mb-3'
+          className='md:text-lg font-semibold transition duration-300 dark:text-gray-300 pb-3 mb-3'
         >
           <Link
             href={`/category/${category.slug}`}

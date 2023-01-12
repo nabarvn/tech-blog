@@ -11,14 +11,14 @@ const TagsWidget = () => {
 
   return (
     <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 lg:p-6 mb-8'>
-      <h3 className='text-xl lg:text-lg mb-8 lg:mb-6 font-semibold cursor-default dark:text-night-white border-b pb-4'>
+      <h3 className='text-xl mb-8 lg:mb-6 font-semibold cursor-default dark:text-night-white border-b pb-4'>
         Tags
       </h3>
       <div className='flex flex-wrap'>
         {tags.map((tag) => (
           <div key={tag.slug} className='text-center mb-2'>
             <Link href={`/tag/${tag.slug}`}>
-              <span className='inline-block ml-2 bg-blue-500 dark:bg-night-blue hover:bg-blue-900 dark:hover:bg-blue-900 text-xs font-semibold rounded-full text-white px-2 py-1 cursor-pointer'>
+              <span className='inline-block ml-2 bg-blue-500 dark:bg-night-blue hover:bg-blue-900 dark:hover:bg-blue-900 text-sm font-semibold rounded-full text-white px-2 py-1 cursor-pointer'>
                 {tag.name}
               </span>
             </Link>

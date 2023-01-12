@@ -81,12 +81,12 @@ const CommentForm = ({ slug }) => {
         <label className='relative cursor-pointer'>
           <textarea
             ref={commentRef}
-            className='p-2 px-3.5 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:1 focus:ring-blue-500 dark:focus:ring-night-blue bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
+            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:1 focus:ring-blue-500 dark:focus:ring-blue-300 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
             placeholder=' '
             name='comment'
             required
           />
-          <span className='px-1 text-md text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-2 transition duration-300 place-holder'>
+          <span className='text-lg text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder'>
             Leave a comment
           </span>
         </label>
@@ -96,12 +96,12 @@ const CommentForm = ({ slug }) => {
           <input
             type='text'
             ref={nameRef}
-            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-night-blue bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
+            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-300 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
             placeholder=' '
             name='name'
             required
           />
-          <span className='px-1 text-md text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-2 transition duration-300 place-holder'>
+          <span className='text-lg text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder'>
             Name
           </span>
         </label>
@@ -109,12 +109,12 @@ const CommentForm = ({ slug }) => {
           <input
             type='text'
             ref={emailRef}
-            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-night-blue bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
+            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-300 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
             placeholder=' '
             name='email'
             required
           />
-          <span className='px-1 text-md text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-2 transition duration-300 place-holder'>
+          <span className='text-lg text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder'>
             Email
           </span>
         </label>
@@ -129,7 +129,7 @@ const CommentForm = ({ slug }) => {
             name='storeData'
           />
           <label
-            className='text-gray-700 dark:text-gray-300 cursor-pointer ml-2'
+            className='text-lg text-gray-700 dark:text-gray-300 cursor-pointer ml-2'
             htmlFor='storeData'
           >
             Save my e-mail and name for the next time I comment.
