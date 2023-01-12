@@ -15,11 +15,17 @@ const CategoriesWidget = () => {
         Categories
       </h3>
       {categories.map((category) => (
-        <Link key={category.slug} href={`/category/${category.slug}`}>
-          <span className='lg:text-sm transition duration-300 cursor-pointer dark:text-gray-300 hover:text-blue-500 dark:hover:text-night-blue block pb-3 mb-3'>
+        <div
+          key={category.slug}
+          className='lg:text-sm font-semibold transition duration-300 dark:text-gray-300 pb-3 mb-3'
+        >
+          <Link
+            href={`/category/${category.slug}`}
+            className='hover:text-blue-500 dark:hover:text-blue-300'
+          >
             {category.name}
-          </span>
-        </Link>
+          </Link>
+        </div>
       ))}
     </div>
   );
