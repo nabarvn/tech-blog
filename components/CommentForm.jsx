@@ -73,7 +73,7 @@ const CommentForm = ({ slug }) => {
   };
 
   return (
-    <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 pb-9 md:pb-7 mb-8'>
+    <div className='relative bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 pb-9 md:pb-7 mb-8'>
       <h3 className='text-xl mb-8 font-semibold cursor-default dark:text-night-white border-b pb-4'>
         Say gm?
       </h3>
@@ -150,8 +150,8 @@ const CommentForm = ({ slug }) => {
           </span>
         )}
         {error && (
-          <span className='text-sm float-left md:float-right font-semibold text-red-500 mt-12 md:mt-3'>
-            All fields are required.
+          <span className='absolute bottom-3 md:bottom-2 left-8 text-sm font-semibold text-red-500'>
+            *All fields are required.
           </span>
         )}
       </div>
