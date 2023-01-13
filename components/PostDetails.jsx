@@ -80,7 +80,7 @@ const PostDetails = ({ post }) => {
           <a
             key={index}
             href={obj.href}
-            className='text-blue-500 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-700'
+            className='text-blue-500 hover:text-blue-900 dark:text-indigo-400 dark:hover:text-indigo-500'
             target={obj.openInNewTab ? "_blank" : "_self"}
           >
             {obj.children.map((item, i) => {
@@ -477,7 +477,7 @@ const PostDetails = ({ post }) => {
               <div>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  className='h-6 w-6 inline mr-2 text-blue-500'
+                  className='h-6 w-6 inline mr-2 text-blue-500 dark:text-indigo-500'
                   fill='none'
                   viewBox='0 0 24 24'
                   stroke='currentColor'

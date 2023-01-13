@@ -81,7 +81,7 @@ const CommentForm = ({ slug }) => {
         <label className='relative cursor-pointer'>
           <textarea
             ref={commentRef}
-            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:1 focus:ring-blue-500 dark:focus:ring-blue-300 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
+            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
             placeholder=' '
             name='comment'
             required
@@ -96,7 +96,7 @@ const CommentForm = ({ slug }) => {
           <input
             type='text'
             ref={nameRef}
-            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-300 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
+            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
             placeholder=' '
             name='name'
             required
@@ -109,7 +109,7 @@ const CommentForm = ({ slug }) => {
           <input
             type='text'
             ref={emailRef}
-            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-300 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
+            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
             placeholder=' '
             name='email'
             required
@@ -127,6 +127,7 @@ const CommentForm = ({ slug }) => {
             defaultChecked={true}
             id='storeData'
             name='storeData'
+            className='cursor-pointer h-3 w-3 dark:accent-indigo-500'
           />
           <label
             className='text-lg text-gray-700 dark:text-gray-300 cursor-pointer ml-2'
@@ -140,7 +141,7 @@ const CommentForm = ({ slug }) => {
         <button
           type='button'
           onClick={handleSubmit}
-          className='transition duration-300 transform bg-blue-500 dark:bg-night-blue hover:bg-blue-900 dark:hover:bg-blue-900 inline-block text-lg font-medium rounded-full text-white px-3 py-1 cursor-pointer'
+          className='transition duration-300 transform bg-blue-500 dark:bg-night-blue hover:bg-blue-900 dark:hover:bg-indigo-700 inline-block text-lg font-medium rounded-full text-white px-3 py-1 cursor-pointer'
         >
           Submit
         </button>

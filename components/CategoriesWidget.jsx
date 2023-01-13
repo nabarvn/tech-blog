@@ -21,7 +21,7 @@ const CategoriesWidget = () => {
         >
           <Link
             href={`/category/${category.slug}`}
-            className='hover:text-blue-500 dark:hover:text-blue-300'
+            className='hover:text-blue-500 dark:hover:text-indigo-500 transition duration-300'
           >
             {category.name}
           </Link>

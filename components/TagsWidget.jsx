@@ -18,7 +18,7 @@ const TagsWidget = () => {
         {tags.map((tag) => (
           <div key={tag.slug} className='text-center mb-2'>
             <Link href={`/tag/${tag.slug}`}>
-              <span className='inline-block ml-2 bg-blue-500 dark:bg-night-blue hover:bg-blue-900 dark:hover:bg-blue-900 text-sm font-semibold rounded-full text-white px-2 py-1 cursor-pointer'>
+              <span className='inline-block ml-2 bg-blue-500 dark:bg-night-blue hover:bg-blue-900 dark:hover:bg-indigo-700 text-sm font-semibold rounded-full text-white px-2 py-1 cursor-pointer transition duration-300'>
                 {tag.name}
               </span>
             </Link>

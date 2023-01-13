@@ -38,7 +38,7 @@ const PostsWidget = ({ slug, categories }) => {
                 </p>
                 <Link
                   href={`/post/${post.slug}`}
-                  className='md:text-lg font-semibold transition duration-300 cursor-pointer dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-300'
+                  className='md:text-lg font-semibold transition duration-300 cursor-pointer dark:text-gray-300 hover:text-blue-500 dark:hover:text-indigo-500'
                 >
                   {post.title}
                 </Link>
