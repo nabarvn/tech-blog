@@ -127,10 +127,10 @@ const CommentForm = ({ slug }) => {
             defaultChecked={true}
             id='storeData'
             name='storeData'
-            className='cursor-pointer h-3 w-3 dark:accent-indigo-500'
+            className='cursor-pointer h-3 w-3 md:h-4 md:w-4 lg:h-3 lg:w-3 dark:accent-indigo-500'
           />
           <label
-            className='text-lg text-gray-700 dark:text-gray-300 cursor-pointer ml-2'
+            className='text-base md:text-lg text-gray-700 dark:text-gray-300 cursor-pointer ml-2'
             htmlFor='storeData'
           >
             Save my e-mail and name for the next time I comment.
