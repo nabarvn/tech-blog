@@ -126,7 +126,7 @@ const CommentForm = ({ slug }) => {
           defaultChecked={true}
           id='storeData'
           name='storeData'
-          className='cursor-pointer h-3 w-3 self-center dark:accent-indigo-500'
+          className='cursor-pointer h-3 w-3 md:self-center dark:accent-indigo-500 mt-1.5 md:mt-0.5'
         />
         <label
           className='text-base lg:text-lg self-center text-gray-700 dark:text-gray-300 cursor-pointer ml-2'
