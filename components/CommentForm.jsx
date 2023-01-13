@@ -130,7 +130,7 @@ const CommentForm = ({ slug }) => {
             className='cursor-pointer h-3 w-3 dark:accent-indigo-500'
           />
           <label
-            className='text-base md:text-lg text-gray-700 dark:text-gray-300 align-baseline cursor-pointer ml-2'
+            className='text-base lg:text-lg text-gray-700 dark:text-gray-300 cursor-pointer ml-2'
             htmlFor='storeData'
           >
             Save my e-mail and name for the next time I comment.
