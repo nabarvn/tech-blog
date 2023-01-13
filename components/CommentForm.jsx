@@ -119,23 +119,21 @@ const CommentForm = ({ slug }) => {
           </span>
         </label>
       </div>
-      <div className='grid grid-cols-1 gap-4 mb-4'>
-        <div>
-          <input
-            ref={storeDataRef}
-            type='checkbox'
-            defaultChecked={true}
-            id='storeData'
-            name='storeData'
-            className='cursor-pointer h-3 w-3 dark:accent-indigo-500'
-          />
-          <label
-            className='text-base lg:text-lg text-gray-700 dark:text-gray-300 cursor-pointer ml-2'
-            htmlFor='storeData'
-          >
-            Save my e-mail and name for the next time I comment.
-          </label>
-        </div>
+      <div className='flex mb-4'>
+        <input
+          ref={storeDataRef}
+          type='checkbox'
+          defaultChecked={true}
+          id='storeData'
+          name='storeData'
+          className='cursor-pointer h-3 w-3 self-center dark:accent-indigo-500'
+        />
+        <label
+          className='text-base lg:text-lg self-center text-gray-700 dark:text-gray-300 cursor-pointer ml-2'
+          htmlFor='storeData'
+        >
+          Save my e-mail and name for the next time I comment.
+        </label>
       </div>
       <div className='mt-8 pb-2'>
         <button
