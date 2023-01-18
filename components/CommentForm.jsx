@@ -5,6 +5,9 @@ import { useTheme } from "next-themes";
 
 const CommentForm = ({ slug }) => {
   const [error, setError] = useState(false);
+  const [commentError, setCommentError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const { theme } = useTheme();
 
@@ -19,6 +22,8 @@ const CommentForm = ({ slug }) => {
   }, []);
 
   const handleSubmit = () => {
+    const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+
     setError(false);
 
     const { value: comment } = commentRef.current;
@@ -28,6 +33,30 @@ const CommentForm = ({ slug }) => {
 
     if (!comment || !name || !email) {
       setError(true);
+
+      if (!comment) {
+        setCommentError(true);
+
+        setTimeout(() => {
+          setCommentError(false);
+        }, 3000);
+      }
+
+      if (!name) {
+        setNameError(true);
+
+        setTimeout(() => {
+          setNameError(false);
+        }, 3000);
+      }
+
+      if (!email) {
+        setEmailError(true);
+
+        setTimeout(() => {
+          setEmailError(false);
+        }, 3000);
+      }
 
       setTimeout(() => {
         setError(false);
@@ -51,7 +80,7 @@ const CommentForm = ({ slug }) => {
       window.localStorage.removeItem("email", email);
     }
 
-    !error &&
+    if (regEx.test(email)) {
       toast.success("Process Initiated...", {
         position: "bottom-center",
         autoClose: 1000,
@@ -63,13 +92,20 @@ const CommentForm = ({ slug }) => {
         theme,
       });
 
-    submitComment(commentObj).then(() => {
-      setShowSuccessMessage(true);
+      submitComment(commentObj).then(() => {
+        setShowSuccessMessage(true);
+
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 3000);
+      });
+    } else if (!regEx.test(email)) {
+      setEmailError(true);
 
       setTimeout(() => {
-        setShowSuccessMessage(false);
+        setEmailError(false);
       }, 3000);
-    });
+    }
   };
 
   return (
@@ -81,13 +117,16 @@ const CommentForm = ({ slug }) => {
         <label className='relative cursor-pointer'>
           <textarea
             ref={commentRef}
-            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
+            className={`px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 ${
+              commentError && "ring-2 ring-red-500"
+            } focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white`}
             placeholder=' '
             name='comment'
+            autoComplete='off'
             required
           />
           <span className='text-lg text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder'>
-            Leave a comment
+            Leave a comment*
           </span>
         </label>
       </div>
@@ -96,26 +135,32 @@ const CommentForm = ({ slug }) => {
           <input
             type='text'
             ref={nameRef}
-            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
+            className={`px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 ${
+              nameError && "ring-2 ring-red-500"
+            } focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white`}
             placeholder=' '
             name='name'
+            autoComplete='off'
             required
           />
           <span className='text-lg text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder'>
-            Name
+            Name*
           </span>
         </label>
         <label className='relative cursor-pointer'>
           <input
             type='text'
             ref={emailRef}
-            className='px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white'
+            className={`px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 ${
+              emailError && "ring-2 ring-red-500"
+            } focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white`}
             placeholder=' '
             name='email'
+            autoComplete='off'
             required
           />
           <span className='text-lg text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder'>
-            Email
+            Email*
           </span>
         </label>
       </div>
@@ -143,7 +188,7 @@ const CommentForm = ({ slug }) => {
         >
           Submit
         </button>
-        {showSuccessMessage && (
+        {showSuccessMessage && !emailError && (
           <span className='text-sm float-left md:float-right font-semibold text-green-500 dark:text-night-teal mt-3'>
             Comment submitted for review.
           </span>
@@ -151,6 +196,11 @@ const CommentForm = ({ slug }) => {
         {error && (
           <span className='absolute bottom-3 md:bottom-2 left-8 text-sm font-semibold text-red-500'>
             *All fields are required.
+          </span>
+        )}
+        {emailError && !error && (
+          <span className='absolute bottom-3 md:bottom-2 left-8 text-sm font-semibold text-red-500'>
+            Please input a valid email address.
           </span>
         )}
       </div>
