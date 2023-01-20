@@ -118,14 +118,19 @@ const CommentForm = ({ slug }) => {
           <textarea
             ref={commentRef}
             className={`px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 ${
-              commentError && "ring-2 ring-red-500"
+              commentError &&
+              "ring-2 ring-red-500 text-red-500 dark:text-red-500"
             } focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white`}
             placeholder=' '
             name='comment'
             autoComplete='off'
             required
           />
-          <span className='text-lg text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder'>
+          <span
+            className={`text-lg text-gray-700 dark:text-gray-300 ${
+              commentError && "text-red-500 dark:text-red-500"
+            } text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder`}
+          >
             Leave a comment*
           </span>
         </label>
@@ -136,14 +141,18 @@ const CommentForm = ({ slug }) => {
             type='text'
             ref={nameRef}
             className={`px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 ${
-              nameError && "ring-2 ring-red-500"
+              nameError && "ring-2 ring-red-500 text-red-500 dark:text-red-500"
             } focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white`}
             placeholder=' '
             name='name'
             autoComplete='off'
             required
           />
-          <span className='text-lg text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder'>
+          <span
+            className={`text-lg text-gray-700 dark:text-gray-300 ${
+              nameError && "text-red-500 dark:text-red-500"
+            } text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder`}
+          >
             Name*
           </span>
         </label>
@@ -152,14 +161,18 @@ const CommentForm = ({ slug }) => {
             type='text'
             ref={emailRef}
             className={`px-3.5 py-2 outline-none w-full rounded-lg ring-1 ring-gray-200 focus:ring-2 ${
-              emailError && "ring-2 ring-red-500"
+              emailError && "ring-2 ring-red-500 text-red-500 dark:text-red-500"
             } focus:ring-blue-500 dark:focus:ring-indigo-500 bg-white dark:bg-night-gray text-gray-700 dark:text-night-white`}
             placeholder=' '
             name='email'
             autoComplete='off'
             required
           />
-          <span className='text-lg text-gray-700 dark:text-gray-300 text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder'>
+          <span
+            className={`text-lg text-gray-700 dark:text-gray-300 ${
+              emailError && "text-red-500 dark:text-red-500"
+            } text-opacity-50 italic absolute left-4 top-1 transition duration-300 place-holder`}
+          >
             Email*
           </span>
         </label>
