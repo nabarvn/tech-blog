@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect, useRef } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { HomeIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Link from "next/link";
 
@@ -53,6 +53,31 @@ const Dropdown = () => {
             !menuOpen && "hidden"
           }`}
         >
+          <div>
+            <Menu.Item>
+              {({ active }) => (
+                <Link
+                  href='https://supercoder.vercel.app'
+                  target='_blank'
+                  className={classNames(
+                    active
+                      ? "bg-gray-100 dark:bg-night-gray text-gray-900 dark:text-night-teal"
+                      : "text-gray-700 dark:text-night-white",
+                    "block px-4 py-2 text-md"
+                  )}
+                  onClick={() => setMenuOpen(!menuOpen)}
+                >
+                  <div className='flex'>
+                    <HomeIcon
+                      className='self-center h-5 w-5'
+                      aria-hidden='true'
+                    />
+                    <span className='self-center ml-2'>Nabarun.xyz</span>
+                  </div>
+                </Link>
+              )}
+            </Menu.Item>
+          </div>
           <div className='py-1'>
             <Menu.Item>
               {({ active }) => (
