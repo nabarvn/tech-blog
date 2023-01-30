@@ -12,7 +12,11 @@ const AuthorWidget = () => {
 
   return (
     <div className='bg-white dark:bg-night-gray text-center shadow-lg rounded-lg bg-opacity-20 mb-8 p-8 lg:p-6'>
-      <Link href='https://supercoder.vercel.app' className='cursor-default'>
+      <Link
+        href='https://supercoder.vercel.app'
+        target='_blank'
+        className='cursor-default'
+      >
         <Image
           alt='Nabarun.eth'
           unoptimized
@@ -25,6 +29,7 @@ const AuthorWidget = () => {
       <div className='my-4'>
         <Link
           href='https://supercoder.vercel.app'
+          target='_blank'
           className='text-xl font-bold hover:text-blue-500 dark:hover:text-night-teal transition duration-300'
         >
           {author.name}
