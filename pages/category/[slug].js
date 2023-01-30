@@ -7,6 +7,7 @@ import {
   CategoriesWidget,
   Loader,
   TagsWidget,
+  AuthorWidget,
 } from "../../components";
 
 const CategoryPosts = ({ posts }) => {
@@ -35,6 +36,7 @@ const CategoryPosts = ({ posts }) => {
         </div>
         <div className='col-span-1 md:col-span-6 lg:col-span-3'>
           <div className='relative md:sticky top-8'>
+            <AuthorWidget />
             <CategoriesWidget />
             <TagsWidget />
           </div>

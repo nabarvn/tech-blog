@@ -6,6 +6,7 @@ import {
   PostsWidget,
   FeaturedPostsWidget,
   TagsWidget,
+  AuthorWidget,
 } from "../components";
 
 import FeaturedPosts from "../sections/FeaturedPosts";
@@ -33,6 +34,7 @@ const Home = ({ posts }) => {
         <div className='col-span-1 md:col-span-6 lg:col-span-3'>
           <div className='relative md:sticky top-8'>
             <FeaturedPostsWidget />
+            <AuthorWidget />
             <PostsWidget />
             <CategoriesWidget />
             <TagsWidget />
