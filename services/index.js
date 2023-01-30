@@ -166,6 +166,24 @@ export const getTags = async () => {
   return result.tags;
 };
 
+export const getAuthor = async () => {
+  const query = gql`
+    query GetAuthor {
+      author(where: { id: "cla6t5red462i0co7q48jsti7" }) {
+        name
+        bio
+        image {
+          url
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.author;
+};
+
 export const getCategoryPosts = async (slug) => {
   const query = gql`
     query GetCategoryPosts($slug: String!) {
