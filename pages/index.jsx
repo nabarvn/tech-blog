@@ -24,7 +24,7 @@ const Home = ({ posts }) => {
       </Head>
       <FeaturedPosts />
       <div className='grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-7 xl:gap-12'>
-        <div className='lg:grid lg:grid-cols-8 lg:gap-7 lg:auto-rows-min xl:gap-12 col-span-1 md:col-span-6 lg:col-span-9'>
+        <div className='lg:grid lg:grid-cols-8 lg:gap-7 xl:gap-12 col-span-1 md:col-span-6 lg:col-span-9'>
           {posts.map((post) => (
             <div key={post.node.title} className='col-span-4'>
               <PostCard post={post.node} />
