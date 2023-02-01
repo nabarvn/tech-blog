@@ -1,6 +1,10 @@
 import { Fragment, useState, useEffect, useRef } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { HomeIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
+import {
+  HomeIcon,
+  ChevronDownIcon,
+  ArrowLongRightIcon,
+} from "@heroicons/react/20/solid";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Link from "next/link";
 
@@ -132,7 +136,11 @@ const Dropdown = () => {
             className='inline-flex w-full justify-between text-md text-gray-700 dark:text-night-white px-4 py-2'
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <span className='self-center'>Theme Switcher ➡️</span>
+            <span className='self-center'>Theme Switcher</span>
+            <ArrowLongRightIcon
+              className='self-center h-4 w-4'
+              aria-hidden='true'
+            />
             <Menu.Button>
               <ThemeSwitcher />
             </Menu.Button>
