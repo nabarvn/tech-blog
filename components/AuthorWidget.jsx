@@ -35,7 +35,7 @@ const AuthorWidget = () => {
           {author.name}
         </Link>
       </div>
-      <p className='cursor-default text-lg font-semibold dark:text-gray-300'>
+      <p className='cursor-default text-base font-semibold dark:text-gray-300'>
         {author.bio}
       </p>
     </div>

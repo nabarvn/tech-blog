@@ -29,7 +29,7 @@ const Author = ({ author }) => {
           {author.name}
         </Link>
       </div>
-      <p className='cursor-default text-lg'>{author.bio}</p>
+      <p className='cursor-default text-base'>{author.bio}</p>
     </div>
   );
 };
