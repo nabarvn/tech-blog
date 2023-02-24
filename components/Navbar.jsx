@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className='self-center float-start'>
           <Link href='/'>
             <span className='cursor-pointer font-bold text-xl md:text-2xl lg:text-xl xl:text-2xl dark:text-night-white'>
-              "BLOG"
+              "wagmi"
             </span>
           </Link>
         </div>
