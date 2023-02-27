@@ -62,7 +62,6 @@ const Dropdown = () => {
               {({ active }) => (
                 <Link
                   href='https://supercoder.vercel.app'
-                  target='_blank'
                   className={classNames(
                     active
                       ? "bg-gray-100 dark:bg-night-gray text-gray-900 dark:text-night-teal"
