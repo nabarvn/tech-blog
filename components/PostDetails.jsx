@@ -164,7 +164,7 @@ const PostDetails = ({ post }) => {
 
       case "paragraph":
         return (
-          <p key={index} className='text-justify cursor-default mb-8'>
+          <p key={index} className='text-justify text-base cursor-default mb-8'>
             {modifiedText.map((item, i) => {
               return <React.Fragment key={i}>{item}</React.Fragment>;
             })}
@@ -194,7 +194,7 @@ const PostDetails = ({ post }) => {
 
               return (
                 <React.Fragment key={i}>
-                  <div className='border-2 bg-code-block text-night-white rounded-lg p-3 pt-2 mb-8'>
+                  <div className='border-2 bg-code-block text-night-white text-base rounded-lg p-3 pt-2 mb-8'>
                     <pre>
                       <code className='block overflow-auto scrollbar-thin scrollbar-track-rounded-lg scrollbar-track-night-gray scrollbar-thumb-rounded-lg scrollbar-thumb-blue-900 dark:scrollbar-thumb-night-blue'>
                         {item}
