@@ -39,6 +39,7 @@ hljs.registerLanguage("python", python);
 
 const PostDetails = ({ post }) => {
   const [mounted, setMounted] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -181,7 +182,6 @@ const PostDetails = ({ post }) => {
               className='dark:bg-teal-900 dark:text-night-teal'
             />
             {modifiedText.map((item, i) => {
-              const [copied, setCopied] = useState(false);
               const snippetCopy = item;
 
               const copySuccess = () => {
