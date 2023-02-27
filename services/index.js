@@ -89,12 +89,12 @@ export const getPostDetails = async (slug) => {
   return result.post;
 };
 
-export const getRecentPosts = async () => {
+export const getLatestPosts = async () => {
   const query = gql`
-    query GetRecentPosts() {
+    query GetLatestPosts() {
       posts(
         orderBy: createdAt_DESC 
-        last: 3
+        first: 3
       ) {
         title
         thumbnail {
@@ -119,7 +119,8 @@ export const getSimilarPosts = async (slug, categories) => {
           slug_not: $slug
           AND: { categories_some: { slug_in: $categories } }
         }
-        last: 3
+        orderBy: createdAt_DESC
+        first: 3
       ) {
         title
         thumbnail {

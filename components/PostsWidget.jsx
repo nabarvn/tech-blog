@@ -1,7 +1,7 @@
 import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getRecentPosts, getSimilarPosts } from "../services";
+import { getLatestPosts, getSimilarPosts } from "../services";
 
 const PostsWidget = ({ slug, categories }) => {
   const [widgetPosts, setWidgetPosts] = useState([]);
@@ -12,7 +12,7 @@ const PostsWidget = ({ slug, categories }) => {
         setWidgetPosts(result)
       );
     } else {
-      getRecentPosts().then((result) => setWidgetPosts(result));
+      getLatestPosts().then((result) => setWidgetPosts(result));
     }
   }, [slug]);
 
@@ -33,12 +33,12 @@ const PostsWidget = ({ slug, categories }) => {
                 />
               </div>
               <div className='flex-grow ml-2 md:ml-4'>
-                <p className='text-gray-700 dark:text-night-teal font-xs cursor-default lg:text-xs'>
+                <p className='text-gray-700 dark:text-night-teal font-normal cursor-default text-xs'>
                   {moment(post.createdAt).format("MMM DD, YYYY")}
                 </p>
                 <Link
                   href={`/post/${post.slug}`}
-                  className='md:text-lg font-semibold transition duration-300 cursor-pointer dark:text-gray-300 hover:text-blue-500 dark:hover:text-indigo-500'
+                  className='text-base xl:text-lg font-semibold transition duration-300 cursor-pointer dark:text-gray-300 hover:text-blue-500 dark:hover:text-indigo-500'
                 >
                   {post.title}
                 </Link>

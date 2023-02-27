@@ -12,14 +12,14 @@ const FeaturedPostCard = ({ post }) => (
       // }}
     />
     <div className='absolute rounded-lg bg-center bg-gradient-to-b opacity-50 from-blue-600 via-blue-900 to-violet-900 w-full h-36 md:h-48' />
-    <div className='flex flex-col rounded-lg p-4 items-center justify-center absolute w-full h-full'>
-      <p className='text-slate-900 dark:text-night-teal mb-6 md:mb-8 font-semibold text-xs'>
+    <div className='flex flex-col rounded-lg p-4 items-center justify-around absolute w-full h-full'>
+      <div className='absolute top-5 text-slate-900 dark:text-night-teal font-medium text-xs md:text-sm'>
         {moment(post.createdAt).format("MMM DD, YYYY")}
-      </p>
-      <p className='text-violet-900 dark:text-night-white mb-14 md:mb-12 font-semibold text-xs md:text-2xl text-center'>
+      </div>
+      <div className='text-violet-900 dark:text-night-white font-semibold text-sm md:text-xl text-center'>
         {post.title}
-      </p>
-      <div className='flex items-center absolute bottom-5 w-full justify-center pb-2'>
+      </div>
+      <div className='flex absolute bottom-3 xl:bottom-5 items-center w-full justify-center mb-2'>
         <Image
           unoptimized
           alt={post.author.name}
@@ -28,7 +28,7 @@ const FeaturedPostCard = ({ post }) => (
           className='align-middle drop-shadow-lg rounded-full'
           src={post.author.image.url}
         />
-        <p className='inline align-middle text-slate-900 dark:text-night-teal text-sm ml-2 font-medium'>
+        <p className='inline align-middle text-slate-900 dark:text-night-teal text-xs md:text-sm ml-2 font-medium'>
           {post.author.name}
         </p>
       </div>
