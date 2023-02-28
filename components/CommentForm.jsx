@@ -95,6 +95,10 @@ const CommentForm = ({ slug }) => {
       submitComment(commentObj).then(() => {
         setShowSuccessMessage(true);
 
+        nameRef.current.value = "";
+        emailRef.current.value = "";
+        commentRef.current.value = "";
+
         setTimeout(() => {
           setShowSuccessMessage(false);
         }, 3000);
