@@ -37,7 +37,7 @@ hljs.registerLanguage("graphql", graphql);
 hljs.registerLanguage("handlebars", handlebars);
 hljs.registerLanguage("python", python);
 
-const PostDetails = ({ post }) => {
+const PostDetails = ({ post, slug }) => {
   const [mounted, setMounted] = useState(false);
   const [copied, setCopied] = useState(false);
   const { theme } = useTheme();
@@ -45,7 +45,7 @@ const PostDetails = ({ post }) => {
   useEffect(() => {
     setMounted(true);
     hljs.highlightAll();
-  }, []);
+  }, [slug]);
 
   const successToast = () => {
     toast.success("Copied Successfully!", {
