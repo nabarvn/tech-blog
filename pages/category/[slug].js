@@ -27,9 +27,9 @@ const CategoryPosts = ({ posts }) => {
         <link rel='icon' href='/nabarun.png' />
       </Head>
       <div className='grid grid-cols-1 md:grid-cols-12 gap-12'>
-        <div className='lg:grid lg:grid-cols-8 lg:gap-7 col-span-1 md:col-span-6 lg:col-span-9'>
+        <div className='lg:grid lg:grid-cols-8 lg:gap-7 col-span-1 md:col-span-6 lg:col-span-9 auto-rows-min'>
           {posts.map((post, index) => (
-            <div key={index} className='col-span-4'>
+            <div key={index} className='flex items-stretch col-span-4'>
               <PostCard post={post.node} />
             </div>
           ))}
