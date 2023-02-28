@@ -30,12 +30,12 @@ const PostCard = ({ post }) => {
             />
           </div>
           <div>
-            <p className='inline align-middle cursor-default text-gray-700 dark:text-night-teal ml-2 font-medium text-sm'>
+            <p className='inline align-middle cursor-default text-gray-700 dark:text-night-teal ml-2 font-medium text-base'>
               {post.author.name}
             </p>
           </div>
         </div>
-        <div className='flex flex-wrap items-center font-medium text-sm text-gray-700 dark:text-night-teal mb-4 md:mb-0 mr-2'>
+        <div className='flex flex-wrap items-center font-medium text-base text-gray-700 dark:text-night-teal mb-4 md:mb-0 mr-2'>
           <div>
             <svg
               xmlns='http://www.w3.org/2000/svg'

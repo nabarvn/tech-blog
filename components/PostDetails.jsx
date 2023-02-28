@@ -119,7 +119,7 @@ const PostDetails = ({ post }) => {
         return (
           <h3
             key={index}
-            className='text-justify text-3xl font-semibold cursor-default mb-8'
+            className='md:text-justify text-3xl font-semibold cursor-default mb-8'
           >
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
@@ -131,7 +131,7 @@ const PostDetails = ({ post }) => {
         return (
           <h4
             key={index}
-            className='text-justify text-2xl font-semibold cursor-default mb-8'
+            className='md:text-justify text-2xl font-semibold cursor-default mb-8'
           >
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
@@ -143,7 +143,7 @@ const PostDetails = ({ post }) => {
         return (
           <h5
             key={index}
-            className='text-justify text-xl font-semibold cursor-default mb-8'
+            className='md:text-justify text-xl font-semibold cursor-default mb-8'
           >
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
@@ -155,7 +155,7 @@ const PostDetails = ({ post }) => {
         return (
           <h6
             key={index}
-            className='text-justify text-lg font-semibold cursor-default mb-8'
+            className='md:text-justify text-lg font-semibold cursor-default mb-8'
           >
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
@@ -165,7 +165,10 @@ const PostDetails = ({ post }) => {
 
       case "paragraph":
         return (
-          <p key={index} className='text-justify text-base cursor-default mb-8'>
+          <p
+            key={index}
+            className='md:text-justify text-base cursor-default mb-8'
+          >
             {modifiedText.map((item, i) => {
               return <React.Fragment key={i}>{item}</React.Fragment>;
             })}
@@ -231,7 +234,7 @@ const PostDetails = ({ post }) => {
       case "block-quote":
         return (
           <div key={index} className='mb-8'>
-            <blockquote className='text-justify p-2 cursor-default border-l-4 border-blue-500 dark:border-night-blue'>
+            <blockquote className='md:text-justify p-2 cursor-default border-l-4 border-blue-500 dark:border-night-blue'>
               {modifiedText.map((item, i) => (
                 <React.Fragment key={i}>{item}</React.Fragment>
               ))}
