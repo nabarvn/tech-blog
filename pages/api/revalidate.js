@@ -35,7 +35,6 @@ const handler = async (req, res) => {
       res.revalidate("/category"),
       res.revalidate("/tag"),
     ]);
-
     return res.status(200).json({ revalidated: true });
   } catch (err) {
     return res.status(500).send("Error revalidating");
