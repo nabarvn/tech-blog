@@ -65,6 +65,12 @@ const Post = ({ post }) => {
 export const getStaticProps = async ({ params }) => {
   const data = await getPostDetails(params.slug);
 
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { post: data },
   };
