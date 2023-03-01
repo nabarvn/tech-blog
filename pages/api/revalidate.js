@@ -4,10 +4,11 @@ const handler = async (req, res) => {
   }
 
   try {
-    await res.revalidate("/");
-    await res.revalidate("/category");
-    await res.revalidate("/post");
-    await res.revalidate("/tag");
+    await res
+      .revalidate("/")
+      .then(res.revalidate("/category"))
+      .then(res.revalidate("/post"))
+      .then(res.revalidate("/tag"));
 
     return res.json({
       revalidated: true,
