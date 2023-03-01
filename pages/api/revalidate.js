@@ -4,7 +4,7 @@ const handler = async (req, res) => {
   }
 
   try {
-    await res.revalidate(req.query.data.slug);
+    await res.revalidate(req.query.path);
     return res.json({
       revalidated: true,
     });
