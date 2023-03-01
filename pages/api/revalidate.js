@@ -31,7 +31,7 @@ const handler = async (req, res) => {
   }
 
   try {
-    await res.revalidate(path.join("/", req.body.data.slug));
+    await res.revalidate(path.join("/post/", req.body.data.slug));
     return res.status(200).json({ revalidated: true });
   } catch (err) {
     return res.status(500).send("Error revalidating");
