@@ -18,17 +18,24 @@
 //   }
 // };
 
-// export default handler;
+import path from "path";
 
 const handler = async (req, res) => {
-  await res.revalidate("/");
+  // Check for secret to confirm this is a valid request
+  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+    return res.status(401).json({ message: "Invalid token" });
+  }
 
-  const pathToRevalidate = `/${
-    req.body?.record?.id || req.body?.old_record?.id
-  }`;
-  await res.revalidate(pathToRevalidate);
+  if (!req.body) {
+    return res.status(422).json({ message: "Invalid request body" });
+  }
 
-  return res.send({ revalidated: true });
+  try {
+    await res.revalidate(path.join("/", req.body.data.slug));
+    return res.status(200).json({ revalidated: true });
+  } catch (err) {
+    return res.status(500).send("Error revalidating");
+  }
 };
 
 export default handler;
