@@ -18,8 +18,6 @@
 //   }
 // };
 
-import path from "path";
-
 const handler = async (req, res) => {
   // Check for secret to confirm this is a valid request
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
@@ -31,7 +29,13 @@ const handler = async (req, res) => {
   }
 
   try {
-    await res.revalidate(req.query.path);
+    await Promise.all([
+      res.revalidate("/"),
+      res.revalidate(`/post/${req.body.data.slug}`),
+      res.revalidate("/category"),
+      res.revalidate("/tag"),
+    ]);
+
     return res.status(200).json({ revalidated: true });
   } catch (err) {
     return res.status(500).send("Error revalidating");
