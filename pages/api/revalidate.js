@@ -126,7 +126,7 @@
 
 // export default handler;
 
-import path from "path";
+const path = require("path");
 
 const handler = async (req, res) => {
   // Check for secret to confirm this is a valid request
