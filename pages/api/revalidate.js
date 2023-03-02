@@ -5,9 +5,19 @@ const handler = async (req, res) => {
   const { articleCategories, articleTags } = useGlobalContext();
 
   const [pathsToRevalidate, setPathsToRevalidate] = useState([]);
+  const [categoryPosts, setCategoryPosts] = useState([]);
+  const [tagPosts, setTagPosts] = useState([]);
   const [articleCategorySlugs, setArticleCategorySlugs] = useState([]);
   const [articleTagSlugs, setArticleTagSlugs] = useState([]);
   const [articleSlugs, setArticleSlugs] = useState([]);
+
+  useEffect(async () => {
+    const categoryPosts = await getCategoryPosts(req.body.data.slug);
+    const tagPosts = await getTagPosts(req.body.data.slug);
+
+    setCategoryPosts(categoryPosts);
+    setTagPosts(tagPosts);
+  }, []);
 
   switch (req.body.data.__typename) {
     case "Post":
@@ -64,8 +74,6 @@ const handler = async (req, res) => {
       }
 
     case "Category":
-      const categoryPosts = await getCategoryPosts(req.body.data.slug);
-
       req.body.data.posts.map((postItem) => {
         categoryPosts.map((post) => {
           if (postItem.id === post.cursor) {
@@ -103,8 +111,6 @@ const handler = async (req, res) => {
       }
 
     case "Tag":
-      const tagPosts = await getTagPosts(req.body.data.slug);
-
       req.body.data.posts.map((postItem) => {
         tagPosts.map((post) => {
           if (postItem.id === post.cursor) {
