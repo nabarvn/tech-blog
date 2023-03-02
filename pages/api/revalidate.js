@@ -1,18 +1,101 @@
+import useGlobalContext from "../../hooks/globalContext";
+import { getCategoryPosts, getTagPosts } from "../../services";
+
 const handler = async (req, res) => {
-  const pathsToRevalidate = [
-    "/",
-    `/post/${req.body.data.slug}`,
-    // `/category/${req.body.data.slug}`,
-    // `/tag/${req.body.data.slug}`,
-    "/category/dsa",
-    "/category/web-development",
-    "/category/blockchain-engineering",
-    "/category/ai",
-    "/tag/react",
-    "/tag/web3",
-    "/tag/dsa",
-    "/tag/solidity",
-  ];
+  const { articleCategories, articleTags } = useGlobalContext();
+
+  const [pathsToRevalidate, setPathsToRevalidate] = useState([]);
+  const [articleCategorySlugs, setArticleCategorySlugs] = useState([]);
+  const [articleTagSlugs, setArticleTagSlugs] = useState([]);
+  const [articleSlugs, setArticleSlugs] = useState([]);
+
+  switch (req.body.data.__typename) {
+    case "Post":
+      req.body.data.categories.map((category) => {
+        articleCategories.map((articleCategory) => {
+          if (category.id === articleCategory.id) {
+            setArticleCategorySlugs([
+              ...articleCategorySlugs,
+              articleCategory.slug,
+            ]);
+          }
+        });
+      });
+
+      req.body.data.tags.map((tag) => {
+        articleTags.map((articleTag) => {
+          if (tag.id === articleTag.id) {
+            setArticleTagSlugs([...articleTagSlugs, articleTag.slug]);
+          }
+        });
+      });
+
+      const articleCategoryPaths = articleCategorySlugs.map((slug) => {
+        return `/category/${slug}`;
+      });
+
+      const articleTagPaths = articleTagSlugs.map((slug) => {
+        return `/tag/${slug}`;
+      });
+
+      setPathsToRevalidate([
+        "/",
+        `/post/${req.body.data.slug}`,
+        ...articleCategoryPaths,
+        ...articleTagPaths,
+      ]);
+
+      break;
+
+    case "Category":
+      const categoryPosts = await getCategoryPosts(req.body.data.slug);
+
+      req.body.data.posts.map((postItem) => {
+        categoryPosts.map((post) => {
+          if (postItem.id === post.cursor) {
+            setArticleSlugs([...articleSlugs, post.node.slug]);
+          }
+        });
+      });
+
+      const categoryArticlePaths = articleSlugs.map((slug) => {
+        return `/post/${slug}`;
+      });
+
+      setPathsToRevalidate([
+        "/",
+        ...categoryArticlePaths,
+        `/category/${req.body.data.slug}`,
+      ]);
+
+      break;
+
+    case "Tag":
+      const tagPosts = await getTagPosts(req.body.data.slug);
+
+      req.body.data.posts.map((postItem) => {
+        tagPosts.map((post) => {
+          if (postItem.id === post.cursor) {
+            setArticleSlugs([...articleSlugs, post.node.slug]);
+          }
+        });
+      });
+
+      const articlePaths = articleSlugs.map((slug) => {
+        return `/post/${slug}`;
+      });
+
+      setPathsToRevalidate([
+        "/",
+        ...articlePaths,
+        `/tag/${req.body.data.slug}`,
+      ]);
+
+      break;
+
+    default:
+      setPathsToRevalidate(["/"]);
+  }
 
   // Check for secret to confirm this is a valid request
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
