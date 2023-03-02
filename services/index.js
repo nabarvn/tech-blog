@@ -141,6 +141,7 @@ export const getCategories = async () => {
   const query = gql`
     query GetCategories {
       categories {
+        id
         name
         slug
       }
@@ -156,6 +157,7 @@ export const getTags = async () => {
   const query = gql`
     query GetTags {
       tags {
+        id
         name
         slug
       }

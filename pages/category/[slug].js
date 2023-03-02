@@ -51,6 +51,12 @@ export default CategoryPosts;
 export async function getStaticProps({ params }) {
   const posts = await getCategoryPosts(params.slug);
 
+  if (!posts) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { posts },
   };
@@ -63,6 +69,6 @@ export async function getStaticPaths() {
 
   return {
     paths: categories.map(({ slug }) => ({ params: { slug } })),
-    fallback: true,
+    fallback: "blocking",
   };
 }

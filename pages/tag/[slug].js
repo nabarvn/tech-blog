@@ -51,6 +51,12 @@ export default TagPosts;
 export async function getStaticProps({ params }) {
   const posts = await getTagPosts(params.slug);
 
+  if (!posts) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { posts },
   };
@@ -59,10 +65,10 @@ export async function getStaticProps({ params }) {
 // Specify dynamic routes to pre-render pages based on data.
 // The HTML is generated at build time and will be reused on each request.
 export async function getStaticPaths() {
-  const categories = await getTags();
+  const tags = await getTags();
 
   return {
-    paths: categories.map(({ slug }) => ({ params: { slug } })),
-    fallback: true,
+    paths: tags.map(({ slug }) => ({ params: { slug } })),
+    fallback: "blocking",
   };
 }
