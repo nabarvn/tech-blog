@@ -24,7 +24,7 @@ const responsive = {
 };
 
 const CarouselViewer = () => {
-  const { featuredPosts, dataLoaded } = useGlobalContext();
+  const { featuredPosts } = useGlobalContext();
 
   const CustomLeftArrow = ({ onClick }) => (
     <div onClick={() => onClick()} className='absolute left-0 cursor-pointer'>
@@ -82,10 +82,9 @@ const CarouselViewer = () => {
         pauseOnHover={true}
         keyBoardControl={true}
       >
-        {dataLoaded &&
-          featuredPosts.map((post, index) => (
-            <FeaturedPostCard key={index} post={post} />
-          ))}
+        {featuredPosts.map((post, index) => (
+          <FeaturedPostCard key={index} post={post} />
+        ))}
       </Carousel>
     </div>
   );

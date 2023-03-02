@@ -1,13 +1,8 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { getCategories } from "../services";
+import useGlobalContext from "../hooks/globalContext";
 
 const CategoriesWidget = () => {
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    getCategories().then((allCategories) => setCategories(allCategories));
-  }, []);
+  const { categories } = useGlobalContext();
 
   return (
     <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 lg:p-6 mb-8'>

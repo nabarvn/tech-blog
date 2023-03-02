@@ -1,6 +1,6 @@
 import { ThemeProvider } from "next-themes";
 import { Layout } from "../components";
-import { FeaturedPostsProvider } from "../context/featuredPostsData";
+import { GlobalContextProvider } from "../context/contextData";
 
 import "../styles/globals.scss";
 import "tailwindcss/tailwind.css";
@@ -11,13 +11,13 @@ import "../styles/reactTooltip.scss";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <FeaturedPostsProvider>
+      <GlobalContextProvider>
         <ThemeProvider enableSystem={true} attribute='class'>
           <Layout>
             <Component {...pageProps} />
           </Layout>
         </ThemeProvider>
-      </FeaturedPostsProvider>
+      </GlobalContextProvider>
     </>
   );
 }

@@ -1,13 +1,8 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { getTags } from "../services";
+import useGlobalContext from "../hooks/globalContext";
 
 const TagsWidget = () => {
-  const [tags, setTags] = useState([]);
-
-  useEffect(() => {
-    getTags().then((allTags) => setTags(allTags));
-  }, []);
+  const { tags } = useGlobalContext();
 
   return (
     <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 lg:p-6 mb-8'>
