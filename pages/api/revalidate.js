@@ -1,6 +1,8 @@
 // import useGlobalContext from "../../hooks/globalContext";
 // import { getCategoryPosts, getTagPosts } from "../../services";
 
+import { useEffect, useState } from "react";
+
 // const handler = async (req, res) => {
 //   const { articleCategories, articleTags } = useGlobalContext();
 
