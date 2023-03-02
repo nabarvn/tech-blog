@@ -126,13 +126,15 @@
 
 // export default handler;
 
-const path = require("path");
-
 const handler = async (req, res) => {
-  pathToRevalidate = path.join(
-    `/${req.body.data.__typename}/`,
-    req.body.data.slug
-  );
+  const path = require("path");
+  const [pathToRevalidate, setPathToRevalidate] = useState("");
+
+  useEffect(() => {
+    setPathToRevalidate(
+      path.join(`/${req.body.data.__typename.toLower()}/`, req.body.data.slug)
+    );
+  }, [req]);
 
   // Check for secret to confirm this is a valid request
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
