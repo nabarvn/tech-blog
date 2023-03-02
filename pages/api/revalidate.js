@@ -17,7 +17,7 @@ const handler = async (req, res) => {
 
     setCategoryPosts(categoryPosts);
     setTagPosts(tagPosts);
-  }, []);
+  }, [req]);
 
   switch (req.body.data.__typename) {
     case "Post":
@@ -55,23 +55,7 @@ const handler = async (req, res) => {
         ...articleTagPaths,
       ]);
 
-      // Check for secret to confirm this is a valid request
-      if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
-        return res.status(401).json({ message: "Invalid token" });
-      }
-
-      if (!req.body) {
-        return res.status(422).json({ message: "Invalid request body" });
-      }
-
-      try {
-        pathsToRevalidate.map(async (path) => {
-          await res.revalidate(path);
-        });
-        return res.status(200).json({ revalidated: true });
-      } catch (err) {
-        return res.status(500).send("Error revalidating");
-      }
+      break;
 
     case "Category":
       req.body.data.posts.map((postItem) => {
@@ -92,23 +76,7 @@ const handler = async (req, res) => {
         `/category/${req.body.data.slug}`,
       ]);
 
-      // Check for secret to confirm this is a valid request
-      if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
-        return res.status(401).json({ message: "Invalid token" });
-      }
-
-      if (!req.body) {
-        return res.status(422).json({ message: "Invalid request body" });
-      }
-
-      try {
-        pathsToRevalidate.map(async (path) => {
-          await res.revalidate(path);
-        });
-        return res.status(200).json({ revalidated: true });
-      } catch (err) {
-        return res.status(500).send("Error revalidating");
-      }
+      break;
 
     case "Tag":
       req.body.data.posts.map((postItem) => {
@@ -129,44 +97,30 @@ const handler = async (req, res) => {
         `/tag/${req.body.data.slug}`,
       ]);
 
-      // Check for secret to confirm this is a valid request
-      if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
-        return res.status(401).json({ message: "Invalid token" });
-      }
-
-      if (!req.body) {
-        return res.status(422).json({ message: "Invalid request body" });
-      }
-
-      try {
-        pathsToRevalidate.map(async (path) => {
-          await res.revalidate(path);
-        });
-        return res.status(200).json({ revalidated: true });
-      } catch (err) {
-        return res.status(500).send("Error revalidating");
-      }
+      break;
 
     default:
       setPathsToRevalidate(["/"]);
 
-      // Check for secret to confirm this is a valid request
-      if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
-        return res.status(401).json({ message: "Invalid token" });
-      }
+      break;
+  }
 
-      if (!req.body) {
-        return res.status(422).json({ message: "Invalid request body" });
-      }
+  // Check for secret to confirm this is a valid request
+  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+    return res.status(401).json({ message: "Invalid token" });
+  }
 
-      try {
-        pathsToRevalidate.map(async (path) => {
-          await res.revalidate(path);
-        });
-        return res.status(200).json({ revalidated: true });
-      } catch (err) {
-        return res.status(500).send("Error revalidating");
-      }
+  if (!req.body) {
+    return res.status(422).json({ message: "Invalid request body" });
+  }
+
+  try {
+    pathsToRevalidate.map(async (path) => {
+      await res.revalidate(path);
+    });
+    return res.status(200).json({ revalidated: true });
+  } catch (err) {
+    return res.status(500).send("Error revalidating");
   }
 };
 
