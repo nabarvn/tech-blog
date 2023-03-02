@@ -2,8 +2,16 @@ const handler = async (req, res) => {
   const pathsToRevalidate = [
     "/",
     `/post/${req.body.data.slug}`,
-    `/category/${req.body.data.slug}`,
-    `/tag/${req.body.data.slug}`,
+    // `/category/${req.body.data.slug}`,
+    // `/tag/${req.body.data.slug}`,
+    "/category/dsa",
+    "/category/web-development",
+    "/category/blockchain-engineering",
+    "/category/ai",
+    "/tag/react",
+    "/tag/web3",
+    "/tag/dsa",
+    "/tag/solidity",
   ];
 
   // Check for secret to confirm this is a valid request
