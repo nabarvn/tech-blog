@@ -45,7 +45,23 @@ const handler = async (req, res) => {
         ...articleTagPaths,
       ]);
 
-      break;
+      // Check for secret to confirm this is a valid request
+      if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+        return res.status(401).json({ message: "Invalid token" });
+      }
+
+      if (!req.body) {
+        return res.status(422).json({ message: "Invalid request body" });
+      }
+
+      try {
+        pathsToRevalidate.map(async (path) => {
+          await res.revalidate(path);
+        });
+        return res.status(200).json({ revalidated: true });
+      } catch (err) {
+        return res.status(500).send("Error revalidating");
+      }
 
     case "Category":
       const categoryPosts = await getCategoryPosts(req.body.data.slug);
@@ -68,7 +84,23 @@ const handler = async (req, res) => {
         `/category/${req.body.data.slug}`,
       ]);
 
-      break;
+      // Check for secret to confirm this is a valid request
+      if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+        return res.status(401).json({ message: "Invalid token" });
+      }
+
+      if (!req.body) {
+        return res.status(422).json({ message: "Invalid request body" });
+      }
+
+      try {
+        pathsToRevalidate.map(async (path) => {
+          await res.revalidate(path);
+        });
+        return res.status(200).json({ revalidated: true });
+      } catch (err) {
+        return res.status(500).send("Error revalidating");
+      }
 
     case "Tag":
       const tagPosts = await getTagPosts(req.body.data.slug);
@@ -91,28 +123,44 @@ const handler = async (req, res) => {
         `/tag/${req.body.data.slug}`,
       ]);
 
-      break;
+      // Check for secret to confirm this is a valid request
+      if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+        return res.status(401).json({ message: "Invalid token" });
+      }
+
+      if (!req.body) {
+        return res.status(422).json({ message: "Invalid request body" });
+      }
+
+      try {
+        pathsToRevalidate.map(async (path) => {
+          await res.revalidate(path);
+        });
+        return res.status(200).json({ revalidated: true });
+      } catch (err) {
+        return res.status(500).send("Error revalidating");
+      }
 
     default:
       setPathsToRevalidate(["/"]);
-  }
 
-  // Check for secret to confirm this is a valid request
-  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
-    return res.status(401).json({ message: "Invalid token" });
-  }
+      // Check for secret to confirm this is a valid request
+      if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+        return res.status(401).json({ message: "Invalid token" });
+      }
 
-  if (!req.body) {
-    return res.status(422).json({ message: "Invalid request body" });
-  }
+      if (!req.body) {
+        return res.status(422).json({ message: "Invalid request body" });
+      }
 
-  try {
-    pathsToRevalidate.map(async (path) => {
-      await res.revalidate(path);
-    });
-    return res.status(200).json({ revalidated: true });
-  } catch (err) {
-    return res.status(500).send("Error revalidating");
+      try {
+        pathsToRevalidate.map(async (path) => {
+          await res.revalidate(path);
+        });
+        return res.status(200).json({ revalidated: true });
+      } catch (err) {
+        return res.status(500).send("Error revalidating");
+      }
   }
 };
 
