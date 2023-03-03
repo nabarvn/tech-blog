@@ -159,15 +159,19 @@
 //   }
 // }
 
-const handler = async (req, res) => {
-  await res.revalidate("/");
+export default async function handler(req, res) {
+  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+    return res.status(401).json({ message: "Invalid token" });
+  }
 
-  const pathToRevalidate = `/${
-    req.body?.data?.slug || req.body?.old_data?.slug
-  }`;
-  await res.revalidate(pathToRevalidate);
+  try {
+    await res.revalidate("/");
+    await res.revalidate(`/post/${req.body.data.slug}`);
 
-  return res.send({ revalidated: true });
-};
-
-export default handler;
+    return res.json({
+      revalidated: true,
+    });
+  } catch (err) {
+    return res.status(500).send("Error revalidating");
+  }
+}
