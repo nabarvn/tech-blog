@@ -134,27 +134,40 @@
 //   }
 // }
 
-export default async function handler(req, res) {
-  //   const path = require("path");
-  const [pathToRevalidate, setPathToRevalidate] = useState("");
+// export default async function handler(req, res) {
+//   //   const path = require("path");
+//   const [pathToRevalidate, setPathToRevalidate] = useState("");
 
-  useEffect(() => {
-    setPathToRevalidate("/");
-  }, []);
+//   useEffect(() => {
+//     setPathToRevalidate("/");
+//   }, []);
 
-  // Check for secret to confirm this is a valid request
-  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
-    return res.status(401).json({ message: "Invalid token" });
-  }
+//   // Check for secret to confirm this is a valid request
+//   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+//     return res.status(401).json({ message: "Invalid token" });
+//   }
 
-  if (!req.body) {
-    return res.status(422).json({ message: "Invalid request body" });
-  }
+//   if (!req.body) {
+//     return res.status(422).json({ message: "Invalid request body" });
+//   }
 
-  try {
-    await res.revalidate(pathToRevalidate);
-    return res.status(200).json({ revalidated: true });
-  } catch (err) {
-    return res.status(500).send("Error revalidating");
-  }
-}
+//   try {
+//     await res.revalidate(pathToRevalidate);
+//     return res.status(200).json({ revalidated: true });
+//   } catch (err) {
+//     return res.status(500).send("Error revalidating");
+//   }
+// }
+
+const handler = async (req, res) => {
+  await res.revalidate("/");
+
+  const pathToRevalidate = `/${
+    req.body?.data?.slug || req.body?.old_data?.slug
+  }`;
+  await res.revalidate(pathToRevalidate);
+
+  return res.send({ revalidated: true });
+};
+
+export default handler;
