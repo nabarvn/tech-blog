@@ -3,8 +3,8 @@ import { getCategoryPosts, getTagPosts } from "../../services";
 
 import { useEffect, useState } from "react";
 
-const handler = (req, res) => {
-  const { articleCategories, articleTags } = useGlobalContext();
+export default async function handler(req, res) {
+  const { categories, tags } = useGlobalContext();
 
   const [pathsToRevalidate, setPathsToRevalidate] = useState([]);
   const [categoryPosts, setCategoryPosts] = useState([]);
@@ -14,21 +14,23 @@ const handler = (req, res) => {
   const [articleSlugs, setArticleSlugs] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const categoryPosts = await getCategoryPosts(req.body.data.slug);
-      const tagPosts = await getTagPosts(req.body.data.slug);
+    const fetchData = async (slug) => {
+      const categoryPosts = await getCategoryPosts(slug);
+      const tagPosts = await getTagPosts(slug);
 
       setCategoryPosts(categoryPosts);
       setTagPosts(tagPosts);
     };
 
-    fetchData();
-  }, [req]);
+    fetchData(req.body.data.slug);
+  }, [req.body]);
 
-  switch (req.body.data.__typename) {
+  const body = req.body;
+
+  switch (body.data.__typename) {
     case "Post":
-      req.body.data.categories.map((category) => {
-        articleCategories.map((articleCategory) => {
+      body.data.categories.map((category) => {
+        categories.map((articleCategory) => {
           if (category.id === articleCategory.id) {
             setArticleCategorySlugs([
               ...articleCategorySlugs,
@@ -38,8 +40,8 @@ const handler = (req, res) => {
         });
       });
 
-      req.body.data.tags.map((tag) => {
-        articleTags.map((articleTag) => {
+      body.data.tags.map((tag) => {
+        tags.map((articleTag) => {
           if (tag.id === articleTag.id) {
             setArticleTagSlugs([...articleTagSlugs, articleTag.slug]);
           }
@@ -56,7 +58,7 @@ const handler = (req, res) => {
 
       setPathsToRevalidate([
         "/",
-        `/post/${req.body.data.slug}`,
+        `/post/${body.data.slug}`,
         ...articleCategoryPaths,
         ...articleTagPaths,
       ]);
@@ -64,7 +66,7 @@ const handler = (req, res) => {
       break;
 
     case "Category":
-      req.body.data.posts.map((postItem) => {
+      body.data.posts.map((postItem) => {
         categoryPosts.map((post) => {
           if (postItem.id === post.cursor) {
             setArticleSlugs([...articleSlugs, post.node.slug]);
@@ -79,13 +81,13 @@ const handler = (req, res) => {
       setPathsToRevalidate([
         "/",
         ...categoryArticlePaths,
-        `/category/${req.body.data.slug}`,
+        `/category/${body.data.slug}`,
       ]);
 
       break;
 
     case "Tag":
-      req.body.data.posts.map((postItem) => {
+      body.data.posts.map((postItem) => {
         tagPosts.map((post) => {
           if (postItem.id === post.cursor) {
             setArticleSlugs([...articleSlugs, post.node.slug]);
@@ -97,11 +99,7 @@ const handler = (req, res) => {
         return `/post/${slug}`;
       });
 
-      setPathsToRevalidate([
-        "/",
-        ...articlePaths,
-        `/tag/${req.body.data.slug}`,
-      ]);
+      setPathsToRevalidate(["/", ...articlePaths, `/tag/${body.data.slug}`]);
 
       break;
 
@@ -116,7 +114,7 @@ const handler = (req, res) => {
     return res.status(401).json({ message: "Invalid token" });
   }
 
-  if (!req.body) {
+  if (!body) {
     return res.status(422).json({ message: "Invalid request body" });
   }
 
@@ -134,9 +132,7 @@ const handler = (req, res) => {
     console.error(`Error revalidating paths: ${error.message}`);
     return res.status(500).json({ message: "Error revalidating paths" });
   }
-};
-
-export default handler;
+}
 
 // const handler = async (req, res) => {
 //   const path = require("path");
