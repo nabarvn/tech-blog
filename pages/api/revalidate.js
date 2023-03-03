@@ -167,28 +167,63 @@
 //   }
 // }
 
+// export default async function handler(req, res) {
+//   const { verifyWebhookSignature } = require("@hygraph/utils");
+
+//   const webhookToken = process.env.REVALIDATE_TOKEN;
+
+//   const body = req.body;
+//   const signature = req.headers["Gcms-signature"];
+
+//   const isValid = verifyWebhookSignature({ body, signature, secret });
+
+//   // Check for secret to confirm this is a valid request
+//   if (req.query.secret !== webhookToken || !isValid) {
+//     return res.status(401).json({ message: "Invalid token" });
+//   }
+
+//   if (!body) {
+//     return res.status(422).json({ message: "Invalid request body" });
+//   }
+
+//   try {
+//     await res.revalidate("/");
+//     return res.status(200).json({ revalidated: true });
+//   } catch (err) {
+//     return res.status(500).send("Error revalidating");
+//   }
+// }
+
 export default async function handler(req, res) {
-  const { verifyWebhookSignature } = require("@hygraph/utils");
+  const model = req.body.data.__typename;
+  const slug = req.body.data.slug;
+  let pathToRevalidate = "";
 
-  const webhookToken = process.env.REVALIDATE_TOKEN;
+  switch (model) {
+    case "Post":
+      pathToRevalidate = `/post/${slug}`;
+      break;
 
-  const body = req.body;
-  const signature = req.headers["Gcms-signature"];
+    case "Category":
+      pathToRevalidate = `/category/${slug}`;
+      break;
 
-  const isValid = verifyWebhookSignature({ body, signature, secret });
+    case "Tag":
+      pathToRevalidate = `/tag/${slug}`;
+      break;
 
-  // Check for secret to confirm this is a valid request
-  if (req.query.secret !== webhookToken || !isValid) {
+    default:
+      pathToRevalidate = `/`;
+      break;
+  }
+
+  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
     return res.status(401).json({ message: "Invalid token" });
   }
 
-  if (!body) {
-    return res.status(422).json({ message: "Invalid request body" });
-  }
-
   try {
-    await res.revalidate("/");
-    return res.status(200).json({ revalidated: true });
+    await res.revalidate(pathToRevalidate);
+    return res.json({ revalidated: true });
   } catch (err) {
     return res.status(500).send("Error revalidating");
   }
