@@ -3,7 +3,7 @@ import { getCategoryPosts, getTagPosts } from "../../services";
 
 import { useEffect, useState } from "react";
 
-const handler = async (req, res) => {
+const handler = (req, res) => {
   const { articleCategories, articleTags } = useGlobalContext();
 
   const [pathsToRevalidate, setPathsToRevalidate] = useState([]);
@@ -13,12 +13,16 @@ const handler = async (req, res) => {
   const [articleTagSlugs, setArticleTagSlugs] = useState([]);
   const [articleSlugs, setArticleSlugs] = useState([]);
 
-  useEffect(async () => {
-    const categoryPosts = await getCategoryPosts(req.body.data.slug);
-    const tagPosts = await getTagPosts(req.body.data.slug);
+  useEffect(() => {
+    const fetchData = async () => {
+      const categoryPosts = await getCategoryPosts(req.body.data.slug);
+      const tagPosts = await getTagPosts(req.body.data.slug);
 
-    setCategoryPosts(categoryPosts);
-    setTagPosts(tagPosts);
+      setCategoryPosts(categoryPosts);
+      setTagPosts(tagPosts);
+    };
+
+    fetchData();
   }, [req]);
 
   switch (req.body.data.__typename) {
