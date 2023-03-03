@@ -195,26 +195,47 @@
 // }
 
 export default async function handler(req, res) {
+  const action = req.body.operation;
   const model = req.body.data.__typename;
   const slug = req.body.data.slug;
   let pathToRevalidate = "";
 
-  switch (model) {
-    case "Post":
-      pathToRevalidate = `/post/${slug}`;
-      break;
+  if (action === "update") {
+    switch (model) {
+      case "Post":
+        pathToRevalidate = `/post/${slug}`;
+        break;
 
-    case "Category":
-      pathToRevalidate = `/category/${slug}`;
-      break;
+      case "Category":
+        pathToRevalidate = `/category/${slug}`;
+        break;
 
-    case "Tag":
-      pathToRevalidate = `/tag/${slug}`;
-      break;
+      case "Tag":
+        pathToRevalidate = `/tag/${slug}`;
+        break;
 
-    default:
-      pathToRevalidate = `/`;
-      break;
+      default:
+        pathToRevalidate = `/`;
+        break;
+    }
+  } else {
+    switch (model) {
+      case "Post":
+        pathToRevalidate = `/post/${slug}`;
+        break;
+
+      case "Category":
+        pathToRevalidate = `/category/${slug}`;
+        break;
+
+      case "Tag":
+        pathToRevalidate = `/tag/${slug}`;
+        break;
+
+      default:
+        pathToRevalidate = `/`;
+        break;
+    }
   }
 
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
