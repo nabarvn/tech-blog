@@ -248,6 +248,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/dsa`,
               `/tag/react`,
+              ...pathsToRevalidate,
             ];
           }
 
@@ -257,6 +258,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/dsa`,
               `/tag/solidity`,
+              ...pathsToRevalidate,
             ];
           }
 
@@ -266,6 +268,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/dsa`,
               `/tag/web3`,
+              ...pathsToRevalidate,
             ];
           }
 
@@ -275,6 +278,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/dsa`,
               `/tag/dsa`,
+              ...pathsToRevalidate,
             ];
           }
         });
@@ -288,6 +292,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/web-development`,
               `/tag/react`,
+              ...pathsToRevalidate,
             ];
           }
 
@@ -297,6 +302,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/web-development`,
               `/tag/solidity`,
+              ...pathsToRevalidate,
             ];
           }
 
@@ -306,6 +312,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/web-development`,
               `/tag/web3`,
+              ...pathsToRevalidate,
             ];
           }
 
@@ -315,6 +322,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/web-development`,
               `/tag/dsa`,
+              ...pathsToRevalidate,
             ];
           }
         });
@@ -328,6 +336,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/blockchain-engineering`,
               `/tag/react`,
+              ...pathsToRevalidate,
             ];
           }
 
@@ -337,6 +346,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/blockchain-engineering`,
               `/tag/solidity`,
+              ...pathsToRevalidate,
             ];
           }
 
@@ -346,6 +356,7 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/blockchain-engineering`,
               `/tag/web3`,
+              ...pathsToRevalidate,
             ];
           }
 
@@ -355,29 +366,30 @@ export default async function handler(req, res) {
               `/post/${slug}`,
               `/category/blockchain-engineering`,
               `/tag/dsa`,
+              ...pathsToRevalidate,
             ];
           }
         });
       }
     });
-  }
+  } else {
+    switch (model) {
+      case "Post":
+        pathsToRevalidate = [`/post/${slug}`];
+        break;
 
-  switch (model) {
-    case "Post":
-      pathsToRevalidate = [`/post/${slug}`];
-      break;
+      case "Category":
+        pathsToRevalidate = [`/category/${slug}`];
+        break;
 
-    case "Category":
-      pathsToRevalidate = [`/category/${slug}`];
-      break;
+      case "Tag":
+        pathsToRevalidate = [`/tag/${slug}`];
+        break;
 
-    case "Tag":
-      pathsToRevalidate = [`/tag/${slug}`];
-      break;
-
-    default:
-      pathsToRevalidate = [`/`];
-      break;
+      default:
+        pathsToRevalidate = [`/`];
+        break;
+    }
   }
 
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
