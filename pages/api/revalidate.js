@@ -195,57 +195,72 @@
 // }
 
 export default async function handler(req, res) {
-  const action = req.body.operation;
+  // const action = req.body.operation;
   const model = req.body.data.__typename;
   const slug = req.body.data.slug;
-  let pathToRevalidate = "";
+  const [pathsToRevalidate, setPathsToRevalidate] = useState([]);
 
-  if (action === "update") {
-    switch (model) {
-      case "Post":
-        pathToRevalidate = `/post/${slug}`;
-        break;
+  // if (action === "update") {
+  //   switch (model) {
+  //     case "Post":
+  //       setPathsToRevalidate(`/post/${slug}`);
+  //       break;
 
-      case "Category":
-        pathToRevalidate = `/category/${slug}`;
-        break;
+  //     case "Category":
+  //       setPathsToRevalidate(`/category/${slug}`);
+  //       break;
 
-      case "Tag":
-        pathToRevalidate = `/tag/${slug}`;
-        break;
+  //     case "Tag":
+  //       setPathsToRevalidate(`/tag/${slug}`);
+  //       break;
 
-      default:
-        pathToRevalidate = `/`;
-        break;
-    }
-  } else {
-    switch (model) {
-      case "Post":
-        pathToRevalidate = `/post/${slug}`;
-        break;
+  //     default:
+  //       setPathsToRevalidate(`/`);
+  //       break;
+  //   }
+  // } else {
+  switch (model) {
+    case "Post":
+      setPathsToRevalidate(`/post/${slug}`);
+      break;
 
-      case "Category":
-        pathToRevalidate = `/category/${slug}`;
-        break;
+    case "Category":
+      setPathsToRevalidate(`/category/${slug}`);
+      break;
 
-      case "Tag":
-        pathToRevalidate = `/tag/${slug}`;
-        break;
+    case "Tag":
+      setPathsToRevalidate(`/tag/${slug}`);
+      break;
 
-      default:
-        pathToRevalidate = `/`;
-        break;
-    }
+    default:
+      setPathsToRevalidate(`/`);
+      break;
   }
+  // }
 
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
     return res.status(401).json({ message: "Invalid token" });
   }
 
+  // try {
+  //   await res.revalidate(pathToRevalidate);
+  //   return res.json({ revalidated: true });
+  // } catch (err) {
+  //   return res.status(500).send("Error revalidating");
+  // }
+
   try {
-    await res.revalidate(pathToRevalidate);
-    return res.json({ revalidated: true });
-  } catch (err) {
-    return res.status(500).send("Error revalidating");
+    pathsToRevalidate.map(async (path) => {
+      try {
+        await res.revalidate(path);
+      } catch (error) {
+        console.error(`Error revalidating ${path}: ${error.message}`);
+      }
+    });
+
+    return res.status(200).json({ revalidated: true });
+  } catch (error) {
+    console.error(`Error revalidating paths: ${error.message}`);
+    return res.status(500).json({ message: "Error revalidating paths" });
   }
 }
