@@ -198,7 +198,7 @@ export default async function handler(req, res) {
   // const action = req.body.operation;
   const model = req.body.data.__typename;
   const slug = req.body.data.slug;
-  const [pathsToRevalidate, setPathsToRevalidate] = useState([]);
+  let pathToRevalidate = ``;
 
   // if (action === "update") {
   //   switch (model) {
@@ -221,19 +221,19 @@ export default async function handler(req, res) {
   // } else {
   switch (model) {
     case "Post":
-      setPathsToRevalidate(`/post/${slug}`);
+      pathToRevalidate = `/post/${slug}`;
       break;
 
     case "Category":
-      setPathsToRevalidate(`/category/${slug}`);
+      pathToRevalidate = `/category/${slug}`;
       break;
 
     case "Tag":
-      setPathsToRevalidate(`/tag/${slug}`);
+      pathToRevalidate = `/tag/${slug}`;
       break;
 
     default:
-      setPathsToRevalidate(`/`);
+      pathToRevalidate = `/`;
       break;
   }
   // }
@@ -242,25 +242,10 @@ export default async function handler(req, res) {
     return res.status(401).json({ message: "Invalid token" });
   }
 
-  // try {
-  //   await res.revalidate(pathToRevalidate);
-  //   return res.json({ revalidated: true });
-  // } catch (err) {
-  //   return res.status(500).send("Error revalidating");
-  // }
-
   try {
-    pathsToRevalidate.map(async (path) => {
-      try {
-        await res.revalidate(path);
-      } catch (error) {
-        console.error(`Error revalidating ${path}: ${error.message}`);
-      }
-    });
-
-    return res.status(200).json({ revalidated: true });
-  } catch (error) {
-    console.error(`Error revalidating paths: ${error.message}`);
-    return res.status(500).json({ message: "Error revalidating paths" });
+    await res.revalidate(pathToRevalidate);
+    return res.json({ revalidated: true });
+  } catch (err) {
+    return res.status(500).send("Error revalidating");
   }
 }
