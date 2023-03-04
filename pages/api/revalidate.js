@@ -230,31 +230,132 @@
 // }
 
 export default async function handler(req, res) {
-  // const action = req.body.operation;
+  const action = req.body.operation;
   const model = req.body.data.__typename;
   const slug = req.body.data.slug;
   let pathsToRevalidate = [];
 
-  // if(action === 'update' && model === 'Post') {
+  if (action === "update" && model === "Post") {
+    const categories = req.body.data.categories;
+    const tags = req.body.data.tags;
 
-  // }
+    categories.forEach((category) => {
+      if (category.id === "clab85xm32ptn0appmpdm4znu") {
+        tags.forEach((tag) => {
+          if (tag.id === "clb59ix6d0pjv0apmxtm7ht6s") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/dsa`,
+              `/tag/react`,
+            ];
+          } else if (tag.id === "clb59u4rd0prn0apmkr7tnqgf") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/dsa`,
+              `/tag/solidity`,
+            ];
+          } else if (tag.id === "clb5hv0hf0wua0bo8j9cqwebn") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/dsa`,
+              `/tag/web3`,
+            ];
+          } else if (tag.id === "cleirgspm04qt0bpk4arkowp4") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/dsa`,
+              `/tag/dsa`,
+            ];
+          }
+        });
+      } else if (category.id === "clab87n4x2pyt0appgdq0n4mu") {
+        tags.forEach((tag) => {
+          if (tag.id === "clb59ix6d0pjv0apmxtm7ht6s") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/web-development`,
+              `/tag/react`,
+            ];
+          } else if (tag.id === "clb59u4rd0prn0apmkr7tnqgf") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/web-development`,
+              `/tag/solidity`,
+            ];
+          } else if (tag.id === "clb5hv0hf0wua0bo8j9cqwebn") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/web-development`,
+              `/tag/web3`,
+            ];
+          } else if (tag.id === "cleirgspm04qt0bpk4arkowp4") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/web-development`,
+              `/tag/dsa`,
+            ];
+          }
+        });
+      } else if (category.id === "clab8az412q0x0app8jqpg0yx") {
+        tags.forEach((tag) => {
+          if (tag.id === "clb59ix6d0pjv0apmxtm7ht6s") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/blockchain-engineering`,
+              `/tag/react`,
+            ];
+          } else if (tag.id === "clb59u4rd0prn0apmkr7tnqgf") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/blockchain-engineering`,
+              `/tag/solidity`,
+            ];
+          } else if (tag.id === "clb5hv0hf0wua0bo8j9cqwebn") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/blockchain-engineering`,
+              `/tag/web3`,
+            ];
+          } else if (tag.id === "cleirgspm04qt0bpk4arkowp4") {
+            pathsToRevalidate = [
+              `/`,
+              `/post/${slug}`,
+              `/category/blockchain-engineering`,
+              `/tag/dsa`,
+            ];
+          }
+        });
+      }
+    });
+  } else {
+    switch (model) {
+      case "Post":
+        pathsToRevalidate = [`/post/${slug}`];
+        break;
 
-  switch (model) {
-    case "Post":
-      pathsToRevalidate = [`/post/${slug}`];
-      break;
+      case "Category":
+        pathsToRevalidate = [`/category/${slug}`];
+        break;
 
-    case "Category":
-      pathsToRevalidate = [`/category/${slug}`];
-      break;
+      case "Tag":
+        pathsToRevalidate = [`/tag/${slug}`];
+        break;
 
-    case "Tag":
-      pathsToRevalidate = [`/tag/${slug}`];
-      break;
-
-    default:
-      pathsToRevalidate = [`/`];
-      break;
+      default:
+        pathsToRevalidate = [`/`];
+        break;
+    }
   }
 
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
