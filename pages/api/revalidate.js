@@ -1,3 +1,62 @@
+export default async function handler(req, res) {
+  const action = req.body.operation;
+  const model = req.body.data.__typename;
+  const slug = req.body.data.slug;
+  let pathsToRevalidate = [];
+
+  if (action === "update" && model === "Post") {
+    pathsToRevalidate = [
+      `/`,
+      `/post/${slug}`,
+      `/category/dsa`,
+      `/category/web-development`,
+      `/category/blockchain-engineering`,
+      `/tag/react`,
+      `/tag/solidity`,
+      `/tag/web3`,
+      `/tag/dsa`,
+    ];
+  } else {
+    switch (model) {
+      case "Post":
+        pathsToRevalidate = [`/post/${slug}`];
+        break;
+
+      case "Category":
+        pathsToRevalidate = [`/category/${slug}`];
+        break;
+
+      case "Tag":
+        pathsToRevalidate = [`/tag/${slug}`];
+        break;
+
+      default:
+        pathsToRevalidate = [`/`];
+        break;
+    }
+  }
+
+  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+    return res.status(401).json({ message: "Invalid token" });
+  }
+
+  try {
+    pathsToRevalidate.forEach(async (path) => {
+      try {
+        await res.revalidate(path);
+      } catch (error) {
+        console.error(`Error revalidating ${path}: ${error.message}`);
+      }
+    });
+
+    return res.status(200).json({ revalidated: true });
+  } catch (error) {
+    console.error(`Error revalidating paths: ${error.message}`);
+    return res.status(500).json({ message: "Error revalidating paths" });
+  }
+}
+
+// Test Attempt1
 // import useGlobalContext from "../../hooks/globalContext";
 // import { getCategoryPosts, getTagPosts } from "../../services";
 
@@ -140,60 +199,7 @@
 //   }
 // }
 
-// export default async function handler(req, res) {
-//   const { verifyWebhookSignature } = require("@hygraph/utils");
-
-//   const webhookToken = process.env.REVALIDATE_TOKEN;
-
-//   const { body } = req.body;
-//   const signature = req.headers["Gcms-signature"];
-
-//   const isValid = verifyWebhookSignature({ body, signature, secret });
-
-//   // Check for secret to confirm this is a valid request
-//   if (req.query.secret !== webhookToken || !isValid) {
-//     return res.status(401).json({ message: "Invalid token" });
-//   }
-
-//   if (!req.body) {
-//     return res.status(422).json({ message: "Invalid request body" });
-//   }
-
-//   try {
-//     await res.revalidate("/");
-//     return res.status(200).json({ revalidated: true });
-//   } catch (err) {
-//     return res.status(500).send("Error revalidating");
-//   }
-// }
-
-// export default async function handler(req, res) {
-//   const { verifyWebhookSignature } = require("@hygraph/utils");
-
-//   const webhookToken = process.env.REVALIDATE_TOKEN;
-
-//   const body = req.body;
-//   const signature = req.headers["Gcms-signature"];
-
-//   const isValid = verifyWebhookSignature({ body, signature, secret });
-
-//   // Check for secret to confirm this is a valid request
-//   if (req.query.secret !== webhookToken || !isValid) {
-//     return res.status(401).json({ message: "Invalid token" });
-//   }
-
-//   if (!body) {
-//     return res.status(422).json({ message: "Invalid request body" });
-//   }
-
-//   try {
-//     await res.revalidate("/");
-//     return res.status(200).json({ revalidated: true });
-//   } catch (err) {
-//     return res.status(500).send("Error revalidating");
-//   }
-// }
-
+//Test Attempt2
 // export default async function handler(req, res) {
 //   const model = req.body.data.__typename;
 //   const slug = req.body.data.slug;
@@ -228,61 +234,3 @@
 //     return res.status(500).send("Error revalidating");
 //   }
 // }
-
-export default async function handler(req, res) {
-  const action = req.body.operation;
-  const model = req.body.data.__typename;
-  const slug = req.body.data.slug;
-  let pathsToRevalidate = [];
-
-  if (action === "update" && model === "Post") {
-    pathsToRevalidate = [
-      `/`,
-      `/post/${slug}`,
-      `/tag/react`,
-      `/tag/solidity`,
-      `/tag/web3`,
-      `/tag/dsa`,
-      `/category/dsa`,
-      `/category/web-development`,
-      `/category/blockchain-engineering`,
-    ];
-  } else {
-    switch (model) {
-      case "Post":
-        pathsToRevalidate = [`/post/${slug}`];
-        break;
-
-      case "Category":
-        pathsToRevalidate = [`/category/${slug}`];
-        break;
-
-      case "Tag":
-        pathsToRevalidate = [`/tag/${slug}`];
-        break;
-
-      default:
-        pathsToRevalidate = [`/`];
-        break;
-    }
-  }
-
-  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
-    return res.status(401).json({ message: "Invalid token" });
-  }
-
-  try {
-    pathsToRevalidate.forEach(async (path) => {
-      try {
-        await res.revalidate(path);
-      } catch (error) {
-        console.error(`Error revalidating ${path}: ${error.message}`);
-      }
-    });
-
-    return res.status(200).json({ revalidated: true });
-  } catch (error) {
-    console.error(`Error revalidating paths: ${error.message}`);
-    return res.status(500).json({ message: "Error revalidating paths" });
-  }
-}

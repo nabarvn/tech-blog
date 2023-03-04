@@ -1,5 +1,4 @@
 import Head from "next/head";
-import useGlobalContext from "../hooks/globalContext";
 
 import {
   PostCard,
@@ -11,11 +10,9 @@ import {
 } from "../components";
 
 import FeaturedPosts from "../sections/FeaturedPosts";
-// import { getPosts } from "../services";
+import { getPosts } from "../services";
 
-const Home = () => {
-  const { posts } = useGlobalContext();
-
+const Home = ({ posts }) => {
   return (
     <div
       id='layout-child'
@@ -51,13 +48,13 @@ const Home = () => {
   );
 };
 
-// export const getStaticProps = async () => {
-//   const posts = (await getPosts()) || [];
+export const getStaticProps = async () => {
+  const posts = (await getPosts()) || [];
 
-//   return {
-//     props: { posts },
-//     // revalidate: 69,
-//   };
-// };
+  return {
+    props: { posts },
+    // revalidate: 69,
+  };
+};
 
 export default Home;
