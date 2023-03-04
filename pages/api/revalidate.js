@@ -383,7 +383,6 @@ export default async function handler(req, res) {
       `/tag/solidity`,
       `/tag/web3`,
       `/tag/dsa`,
-      ...pathsToRevalidate,
     ];
   } else {
     switch (model) {
