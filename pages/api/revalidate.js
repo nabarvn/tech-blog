@@ -65,12 +65,7 @@ import {
 } from "../../services";
 
 export default async function handler(req, res) {
-  // const { verifyWebhookSignature } = require("@hygraph/utils");
-  const webhookToken = process.env.REVALIDATE_TOKEN;
   const body = req.body;
-  // const signature = req.headers["Gcms-signature"];
-  // const isValid = verifyWebhookSignature({ body, signature, webhookToken });
-
   const model = body.data.__typename;
 
   const categories = await getCategories();
@@ -166,12 +161,8 @@ export default async function handler(req, res) {
   }
 
   // Check for secret to confirm this is a valid request
-  if (req.query.secret !== webhookToken) {
+  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
     return res.status(401).json({ message: "Invalid token" });
-  }
-
-  if (!body) {
-    return res.status(422).json({ message: "Invalid request body" });
   }
 
   try {
