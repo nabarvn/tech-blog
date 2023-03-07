@@ -227,7 +227,7 @@ export default async function handler(req, res) {
 
   const categories = await getCategories();
   const tags = await getTags();
-  const tagPosts = await getTagPosts();
+  const tagPosts = await getTagPosts(slug);
 
   let pathsToRevalidate = [];
   let articleSlugs = [];
