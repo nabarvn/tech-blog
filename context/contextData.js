@@ -1,25 +1,15 @@
 import { useEffect, useState, createContext } from "react";
 
-import {
-  getCategories,
-  getFeaturedPosts,
-  getPosts,
-  getTags,
-} from "../services";
+import { getCategories, getFeaturedPosts, getTags } from "../services";
 
 const appContext = createContext();
 
 export const GlobalContextProvider = ({ children }) => {
-  const [posts, setPosts] = useState([]);
   const [featuredPosts, setFeaturedPosts] = useState([]);
   const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    getPosts().then((res) => {
-      setPosts(res);
-    });
-
     getFeaturedPosts().then((res) => {
       setFeaturedPosts(res);
     });
@@ -34,7 +24,7 @@ export const GlobalContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <appContext.Provider value={{ posts, featuredPosts, tags, categories }}>
+    <appContext.Provider value={{ featuredPosts, tags, categories }}>
       {children}
     </appContext.Provider>
   );
