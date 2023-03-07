@@ -234,7 +234,10 @@ export default async function handler(req, res) {
   let articleTagSlugs = [];
   let articleTagPaths = [];
 
-  if (action === "update" && model === "Post") {
+  if (
+    (action === "update" && model === "Post") ||
+    (action === "delete" && model === "Post")
+  ) {
     req.body.data.categories.forEach((category) => {
       categories.forEach((articleCategory) => {
         if (category.id === articleCategory.id) {
