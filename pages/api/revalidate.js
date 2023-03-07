@@ -235,7 +235,7 @@ export default async function handler(req, res) {
   let articleTagPaths = [];
 
   if (action === "update" && model === "Post") {
-    body.data.categories.forEach((category) => {
+    req.body.data.categories.forEach((category) => {
       categories.forEach((articleCategory) => {
         if (category.id === articleCategory.id) {
           articleCategorySlugs = [
@@ -246,7 +246,7 @@ export default async function handler(req, res) {
       });
     });
 
-    body.data.tags.forEach((tag) => {
+    req.body.data.tags.forEach((tag) => {
       tags.forEach((articleTag) => {
         if (tag.id === articleTag.id) {
           articleTagSlugs = [...articleTagSlugs, `${articleTag.slug}`];
@@ -264,7 +264,7 @@ export default async function handler(req, res) {
 
     pathsToRevalidate = [
       `/`,
-      `/post/${body.data.slug}`,
+      `/post/${slug}`,
       ...articleCategoryPaths,
       ...articleTagPaths,
     ];
