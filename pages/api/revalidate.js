@@ -218,7 +218,7 @@
 // }
 
 //Test Attempt4
-import { getCategories, getTags } from "../../services";
+import { getCategories, getTagPosts, getTags } from "../../services";
 
 export default async function handler(req, res) {
   const action = req.body.operation;
@@ -227,8 +227,11 @@ export default async function handler(req, res) {
 
   const categories = await getCategories();
   const tags = await getTags();
+  const tagPosts = await getTagPosts();
 
   let pathsToRevalidate = [];
+  let articleSlugs = [];
+  let articlePaths = [];
   let articleCategorySlugs = [];
   let articleCategoryPaths = [];
   let articleTagSlugs = [];
@@ -271,6 +274,20 @@ export default async function handler(req, res) {
       ...articleCategoryPaths,
       ...articleTagPaths,
     ];
+  } else if (action === "update" && model === "Tag") {
+    req.body.data.posts.forEach((postItem) => {
+      tagPosts.forEach((post) => {
+        if (postItem.id === post.cursor) {
+          articleSlugs = [...articleSlugs, `${post.node.slug}`];
+        }
+      });
+    });
+
+    articleSlugs.forEach((slug) => {
+      articlePaths = [...articlePaths, `/post/${slug}`];
+    });
+
+    pathsToRevalidate = [`/`, ...articlePaths, `/tag/${slug}`];
   } else {
     switch (model) {
       case "Post":
