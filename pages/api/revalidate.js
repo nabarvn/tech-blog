@@ -277,7 +277,7 @@ export default async function handler(req, res) {
   } else if (action === "update" && model === "Tag") {
     req.body.data.posts.forEach((postItem) => {
       posts.forEach((post) => {
-        if (postItem.id === post.cursor) {
+        if (postItem.id === post.node.id) {
           articleSlugs = [...articleSlugs, `${post.node.slug}`];
         }
       });
