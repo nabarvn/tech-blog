@@ -218,7 +218,7 @@
 // }
 
 //Test Attempt4
-import { getCategories, getTagPosts, getTags } from "../../services";
+import { getCategories, getPosts, getTags } from "../../services";
 
 export default async function handler(req, res) {
   const action = req.body.operation;
