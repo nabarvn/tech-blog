@@ -5,7 +5,7 @@ const Author = ({ author }) => {
   return (
     <div className='text-center mt-20 mb-8 p-12 relative shadow-lg rounded-lg bg-sky-700 bg-opacity-20'>
       <div className='absolute left-0 right-0 -top-14'>
-        <Link href='https://supercoder.vercel.app' className='cursor-default'>
+        <Link href='https://nabarun.xyz' className='cursor-default'>
           <Image
             alt={author.name}
             unoptimized
@@ -18,7 +18,7 @@ const Author = ({ author }) => {
       </div>
       <div className='my-4'>
         <Link
-          href='https://supercoder.vercel.app'
+          href='https://nabarun.xyz'
           className='text-xl font-bold hover:text-blue-500 dark:hover:text-night-teal transition duration-300'
         >
           {author.name}
