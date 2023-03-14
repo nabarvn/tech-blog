@@ -37,7 +37,7 @@ const Footer = () => {
       </div>
       <div className='p-1'>
         <Link
-          href='https://github.com/nabarvn/devfolio'
+          href='https://github.com/nabarvn/blogsite'
           className='hover:text-blue-500 dark:hover:text-indigo-400'
           target='_blank'
         >
