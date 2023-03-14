@@ -201,7 +201,7 @@ const CommentForm = ({ slug }) => {
         <button
           type='button'
           onClick={handleSubmit}
-          className='transition duration-300 transform bg-blue-500 dark:bg-night-blue hover:bg-blue-900 dark:hover:bg-indigo-700 inline-block text-lg font-medium rounded-full text-white px-3 py-1 cursor-pointer'
+          className='bg-blue-500 dark:bg-night-blue active:bg-blue-900 dark:active:bg-indigo-700 inline-block text-lg font-medium rounded-full text-white px-3 py-1 cursor-pointer'
         >
           Submit
         </button>

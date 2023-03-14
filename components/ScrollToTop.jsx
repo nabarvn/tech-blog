@@ -40,7 +40,7 @@ const ScrollToTop = () => {
         onClick={scrollToTop}
         className={`${
           !isVisible && "hidden"
-        } inline-flex items-center p-2 rounded-lg shadow-sm bg-blue-500 hover:bg-blue-900 dark:bg-night-blue dark:hover:bg-indigo-700 text-white dark:text-night-white focus:outline-none transition duration-300`}
+        } inline-flex items-center p-2 rounded-lg shadow-sm bg-blue-500 active:bg-blue-900 dark:bg-night-blue dark:active:bg-indigo-700 text-white dark:text-night-white focus:outline-none`}
       >
         <ArrowUpIcon className='h-5 w-5' aria-hidden='true' />
       </button>
