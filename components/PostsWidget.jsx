@@ -25,14 +25,14 @@ const PostsWidget = ({ slug, categories }) => {
           </h3>
           {widgetPosts.map((post) => (
             <div key={post.title} className='flex items-center w-full mb-4'>
-              <div className='flex-none w-20 lg:w-16'>
+              <div className='flex-none md:hidden w-20 lg:w-16'>
                 <img
                   alt={post.title}
-                  className='align-middle rounded-full h-10 w-3/4 lg:h-9'
+                  className='align-middle rounded-full h-10 w-3/4 lg:h-9 ml-2'
                   src={post.thumbnail.url}
                 />
               </div>
-              <div className='flex-grow ml-2 md:ml-4'>
+              <div className='flex-grow ml-2 md:mx-2'>
                 <p className='text-gray-700 dark:text-night-teal font-normal cursor-default text-xs'>
                   {moment(post.createdAt).format("MMM DD, YYYY")}
                 </p>
