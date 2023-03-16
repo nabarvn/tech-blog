@@ -12,7 +12,7 @@ const CategoriesWidget = () => {
       {categories.map((category) => (
         <div
           key={category.slug}
-          className='text-base xl:text-lg font-semibold transition duration-300 dark:text-gray-300 pb-3 mb-3'
+          className='text-base xl:text-lg font-semibold transition duration-300 dark:text-gray-300 px-2 pb-3 mb-3'
         >
           <Link
             href={`/category/${category.slug}`}
