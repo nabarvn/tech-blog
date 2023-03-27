@@ -21,7 +21,7 @@ const AuthorWidget = () => {
           height={75}
           width={75}
           className='align-middle mx-auto cursor-pointer rounded-full hover:ring-2 hover:ring-blue-500 dark:hover:ring-night-blue transition duration-300'
-          src='/nabarun.png'
+          src={author.image.url}
         />
       </Link>
       <div className='my-3'>
