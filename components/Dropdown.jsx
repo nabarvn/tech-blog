@@ -1,12 +1,13 @@
 import { Fragment, useState, useEffect, useRef } from "react";
 import { Menu, Transition } from "@headlessui/react";
+import Link from "next/link";
+
 import {
   HomeIcon,
   ChevronDownIcon,
   ArrowLongRightIcon,
 } from "@heroicons/react/20/solid";
 import ThemeSwitcher from "./ThemeSwitcher";
-import Link from "next/link";
 
 const classNames = (...classes) => {
   return classes.filter(Boolean).join(" ");
@@ -85,7 +86,7 @@ const Dropdown = () => {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href='/category/dsa'
+                  href='/category/blockchain-engineering'
                   className={classNames(
                     active
                       ? "bg-gray-100 dark:bg-night-gray text-gray-900 dark:text-night-teal"
@@ -94,7 +95,7 @@ const Dropdown = () => {
                   )}
                   onClick={() => setMenuOpen(!menuOpen)}
                 >
-                  Data Structures and Algorithms
+                  Blockchain Engineering
                 </Link>
               )}
             </Menu.Item>
@@ -117,7 +118,7 @@ const Dropdown = () => {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href='/category/blockchain-engineering'
+                  href='/category/dsa'
                   className={classNames(
                     active
                       ? "bg-gray-100 dark:bg-night-gray text-gray-900 dark:text-night-teal"
@@ -126,7 +127,7 @@ const Dropdown = () => {
                   )}
                   onClick={() => setMenuOpen(!menuOpen)}
                 >
-                  Blockchain Engineering
+                  Data Structures and Algorithms
                 </Link>
               )}
             </Menu.Item>
