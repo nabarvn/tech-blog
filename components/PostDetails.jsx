@@ -450,7 +450,7 @@ const PostDetails = ({ post, slug }) => {
 
   return (
     <>
-      <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg lg:p-8 pb-12 mb-8'>
+      <div className='bg-white dark:bg-night-gray shadow-md rounded-lg lg:p-8 pb-12 mb-8'>
         <div className='relative overflow-hidden shadow-md mb-6'>
           <img
             src={post.thumbnail.url}

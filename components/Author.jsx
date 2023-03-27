@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Author = ({ author }) => {
   return (
-    <div className='text-center mt-20 mb-8 p-12 relative shadow-lg rounded-lg bg-sky-700 bg-opacity-20'>
+    <div className='text-center mt-20 mb-8 p-12 relative shadow-md rounded-lg bg-sky-700 bg-opacity-20'>
       <div className='absolute left-0 right-0 -top-14'>
         <Link href='https://nabarun.xyz' className='cursor-default'>
           <Image

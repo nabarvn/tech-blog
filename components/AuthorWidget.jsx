@@ -13,7 +13,7 @@ const AuthorWidget = () => {
   }, []);
 
   return (
-    <div className='bg-white dark:bg-night-gray text-center shadow-lg rounded-lg bg-opacity-20 mb-8 p-8 lg:p-6'>
+    <div className='bg-white dark:bg-night-gray text-center shadow-md rounded-lg mb-8 p-8 lg:p-6'>
       <Link href='https://nabarun.xyz' className='cursor-default'>
         <Image
           alt='Nabarun.eth'

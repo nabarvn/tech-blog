@@ -113,7 +113,7 @@ const CommentForm = ({ slug }) => {
   };
 
   return (
-    <div className='relative bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 pb-9 md:pb-7'>
+    <div className='relative bg-white dark:bg-night-gray shadow-md rounded-lg p-8 pb-9 md:pb-7'>
       <h3 className='text-xl mb-8 font-semibold cursor-default dark:text-night-white border-b pb-4'>
         Say gm?
       </h3>

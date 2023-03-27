@@ -3,13 +3,13 @@ import Link from "next/link";
 
 const PostCard = ({ post }) => {
   return (
-    <div className='flex flex-col bg-white dark:bg-night-gray shadow-lg dark:shadow-md group transition duration-300 hover:shadow-blue-500 dark:hover:shadow-night-teal rounded-lg p-0 lg:p-5 pb-3 mb-8 lg:mb-0 hover:cursor-pointer'>
+    <div className='flex flex-col bg-white dark:bg-night-gray shadow-md dark:shadow-md group transition duration-300 hover:shadow-blue-500 dark:hover:shadow-night-teal rounded-lg p-0 lg:p-5 pb-3 mb-8 lg:mb-0 hover:cursor-pointer'>
       <Link href={`/post/${post.slug}`}>
         <div className='relative overflow-hidden md:shadow-md pb-48 mb-8'>
           <img
             src={post.thumbnail.url}
             alt={post.title}
-            className='absolute h-48 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg'
+            className='absolute h-48 w-full object-cover shadow-md rounded-t-lg lg:rounded-lg'
           />
         </div>
         <h1 className='transition duration-300 text-center mb-8 cursor-pointer dark:text-night-white group-hover:text-blue-500 dark:group-hover:text-night-teal text-xl md:text-2xl font-semibold px-1 lg:px-0'>

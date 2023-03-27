@@ -5,7 +5,7 @@ const TagsWidget = () => {
   const { tags } = useGlobalContext();
 
   return (
-    <div className='bg-white dark:bg-night-gray shadow-lg rounded-lg p-8 lg:p-6 mb-8'>
+    <div className='bg-white dark:bg-night-gray shadow-md rounded-lg p-8 lg:p-6 mb-8'>
       <h3 className='text-xl mb-8 lg:mb-6 font-semibold cursor-default dark:text-night-white border-b pb-4'>
         Tags
       </h3>
