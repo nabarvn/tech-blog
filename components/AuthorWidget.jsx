@@ -35,7 +35,7 @@ const AuthorWidget = () => {
       <div className='flex justify-center mb-3'>
         <div
           id='twitter-logo'
-          className='cursor-pointer bg-light-gray dark:bg-night-gray hover:bg-gray-100 dark:hover:bg-night-black transition duration-300 rounded-lg p-1.5 md:p-2'
+          className='cursor-pointer bg-white dark:bg-night-gray hover:bg-light-gray dark:hover:bg-night-black transition duration-300 rounded-lg p-1.5 md:p-2'
         >
           <a href='https://www.twitter.com/nabarvn' target='_blank'>
             <RxTwitterLogo className='text-twitter-blue dark:text-slate-400 h-5 w-5' />
@@ -43,7 +43,7 @@ const AuthorWidget = () => {
         </div>
         <div
           id='github-logo'
-          className='cursor-pointer bg-light-gray dark:bg-night-gray hover:bg-gray-100 dark:hover:bg-night-black transition duration-300 rounded-lg p-1.5 md:p-2'
+          className='cursor-pointer bg-white dark:bg-night-gray hover:bg-light-gray dark:hover:bg-night-black transition duration-300 rounded-lg p-1.5 md:p-2'
         >
           <a href='https://www.github.com/nabarvn' target='_blank'>
             <RxGithubLogo className='text-github-black dark:text-slate-400 h-5 w-5' />
@@ -51,7 +51,7 @@ const AuthorWidget = () => {
         </div>
         <div
           id='linkedin-logo'
-          className='cursor-pointer bg-light-gray dark:bg-night-gray hover:bg-gray-100 dark:hover:bg-night-black transition duration-300 rounded-lg p-1.5 md:p-2'
+          className='cursor-pointer bg-white dark:bg-night-gray hover:bg-light-gray dark:hover:bg-night-black transition duration-300 rounded-lg p-1.5 md:p-2'
         >
           <a href='https://www.linkedin.com/in/nabarvn' target='_blank'>
             <RxLinkedinLogo className='text-linkedin-blue dark:text-slate-400 h-5 w-5' />
