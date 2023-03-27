@@ -336,7 +336,7 @@ const PostDetails = ({ post, slug }) => {
             style={{
               listStyleType: "upper-roman",
             }}
-            className='cursor-default ml-4 mb-8'
+            className='cursor-default ml-5 mb-8'
           >
             {obj.children.map((listItem, i) => {
               return (
