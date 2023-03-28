@@ -470,9 +470,9 @@ const PostDetails = ({ post, slug }) => {
                 <Image
                   alt='Nabarun.eth'
                   unoptimized
-                  height={75}
-                  width={75}
-                  className='align-middle rounded-full h-7 w-7'
+                  height={25}
+                  width={25}
+                  className='align-middle rounded-full'
                   src={post.author.image.url}
                 />
               </div>
