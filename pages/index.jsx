@@ -20,7 +20,7 @@ const Home = ({ posts, author }) => {
     >
       <Head>
         <title>Nabarun</title>
-        <link rel='icon' href='/nabarun.png' />
+        <link rel='icon' href={author.image.url} />
       </Head>
       <FeaturedPosts />
       <div className='grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-7 xl:gap-12'>

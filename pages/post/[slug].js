@@ -29,7 +29,7 @@ const Post = ({ post }) => {
     >
       <Head>
         <title>Nabarun</title>
-        <link rel='icon' href='/nabarun.png' />
+        <link rel='icon' href={post.author.image.url} />
       </Head>
       <div className='mb-2 ml-2'>
         <Link

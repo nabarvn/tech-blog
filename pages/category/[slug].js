@@ -24,7 +24,7 @@ const CategoryPosts = ({ posts, author }) => {
     >
       <Head>
         <title>Nabarun</title>
-        <link rel='icon' href='/nabarun.png' />
+        <link rel='icon' href={author.image.url} />
       </Head>
       <div className='grid grid-cols-1 md:grid-cols-12 gap-12'>
         <div className='lg:grid lg:grid-cols-8 lg:gap-7 col-span-1 md:col-span-6 lg:col-span-9 auto-rows-min'>

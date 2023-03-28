@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import { getAuthor } from "../services";
 
-const ErrorPage = () => {
+const ErrorPage = ({ author }) => {
   return (
     <div
       id='layout-child'
@@ -9,7 +10,7 @@ const ErrorPage = () => {
     >
       <Head>
         <title>Nabarun</title>
-        <link rel='icon' href='/nabarun.png' />
+        <link rel='icon' href={author.image.url} />
       </Head>
       <div className='text-2xl mb-8'>You seem lost, fren.</div>
       <Link href='/'>
@@ -19,6 +20,14 @@ const ErrorPage = () => {
       </Link>
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const author = await getAuthor();
+
+  return {
+    props: { author },
+  };
 };
 
 export default ErrorPage;
