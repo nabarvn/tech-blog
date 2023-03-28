@@ -1,17 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { RxGithubLogo, RxLinkedinLogo, RxTwitterLogo } from "react-icons/rx";
 import { Tooltip } from "react-tooltip";
-import { getAuthor } from "../services";
 
-const AuthorWidget = () => {
-  const [author, setAuthor] = useState({});
-
-  useEffect(() => {
-    getAuthor().then((author) => setAuthor(author));
-  }, []);
-
+const AuthorWidget = ({ author }) => {
   return (
     <div className='bg-white dark:bg-night-gray text-center shadow-md rounded-lg mb-8 p-8 lg:p-6'>
       <Link href='https://nabarun.xyz' className='cursor-default'>

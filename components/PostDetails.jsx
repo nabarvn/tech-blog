@@ -25,6 +25,7 @@ import graphql from "highlight.js/lib/languages/graphql";
 import handlebars from "highlight.js/lib/languages/handlebars";
 import python from "highlight.js/lib/languages/python";
 import Table from "./Table";
+import Image from "next/image";
 
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("typescript", typescript);
@@ -452,20 +453,25 @@ const PostDetails = ({ post, slug }) => {
     <>
       <div className='bg-white dark:bg-night-gray shadow-md rounded-lg lg:p-8 pb-12 mb-8'>
         <div className='relative overflow-hidden shadow-md mb-6'>
-          <img
-            src={post.thumbnail.url}
+          <Image
             alt={post.title}
+            unoptimized
+            height={100}
+            width={100}
             className='object-top h-full w-full rounded-t-lg'
+            src={post.thumbnail.url}
+            priority
           />
         </div>
         <div className='px-4 lg:px-0'>
           <div className='flex flex-wrap items-center justify-center mb-8 w-full'>
             <div className='flex flex-wrap items-center mb-4 md:mb-0 md:w-auto mr-5 md:mr-9'>
               <div>
-                <img
-                  alt={post.author.name}
-                  height='30px'
-                  width='30px'
+                <Image
+                  alt='Nabarun.eth'
+                  unoptimized
+                  height={75}
+                  width={75}
                   className='align-middle rounded-full h-7 w-7'
                   src={post.author.image.url}
                 />

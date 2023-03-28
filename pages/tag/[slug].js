@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { getTags, getTagPosts } from "../../services";
+import { getTags, getTagPosts, getAuthor } from "../../services";
 
 import {
   PostCard,
@@ -10,7 +10,7 @@ import {
   AuthorWidget,
 } from "../../components";
 
-const TagPosts = ({ posts }) => {
+const TagPosts = ({ posts, author }) => {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -36,7 +36,7 @@ const TagPosts = ({ posts }) => {
         </div>
         <div className='col-span-1 md:col-span-6 lg:col-span-3'>
           <div className='relative md:sticky top-8'>
-            <AuthorWidget />
+            <AuthorWidget author={author} />
             <CategoriesWidget />
             <TagsWidget />
           </div>
@@ -48,8 +48,9 @@ const TagPosts = ({ posts }) => {
 export default TagPosts;
 
 // Fetch data at build time
-export async function getStaticProps({ params }) {
+export const getStaticProps = async ({ params }) => {
   const posts = await getTagPosts(params.slug);
+  const author = await getAuthor();
 
   if (!posts) {
     return {
@@ -58,17 +59,17 @@ export async function getStaticProps({ params }) {
   }
 
   return {
-    props: { posts },
+    props: { posts, author },
   };
-}
+};
 
 // Specify dynamic routes to pre-render pages based on data.
 // The HTML is generated at build time and will be reused on each request.
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const tags = await getTags();
 
   return {
     paths: tags.map(({ slug }) => ({ params: { slug } })),
     fallback: "blocking",
   };
-}
+};

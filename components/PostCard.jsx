@@ -1,4 +1,5 @@
 import moment from "moment/moment";
+import Image from "next/image";
 import Link from "next/link";
 
 const PostCard = ({ post }) => {
@@ -6,10 +7,14 @@ const PostCard = ({ post }) => {
     <div className='flex flex-col bg-white dark:bg-night-gray shadow-md dark:shadow-md group transition duration-300 hover:shadow-blue-500 dark:hover:shadow-night-teal rounded-lg p-0 lg:p-5 pb-3 mb-8 lg:mb-0 hover:cursor-pointer'>
       <Link href={`/post/${post.slug}`}>
         <div className='relative overflow-hidden md:shadow-md pb-48 mb-8'>
-          <img
-            src={post.thumbnail.url}
+          <Image
             alt={post.title}
+            unoptimized
+            height={100}
+            width={100}
             className='absolute h-48 w-full object-cover shadow-md rounded-t-lg lg:rounded-lg'
+            src={post.thumbnail.url}
+            priority
           />
         </div>
         <h1 className='transition duration-300 text-center mb-8 cursor-pointer dark:text-night-white group-hover:text-blue-500 dark:group-hover:text-night-teal text-xl md:text-2xl font-semibold px-1 lg:px-0'>
@@ -21,10 +26,11 @@ const PostCard = ({ post }) => {
       <div className='flex flex-wrap items-center justify-center mb-8 mt-auto w-full'>
         <div className='flex flex-wrap items-center mb-4 md:mb-0 md:w-auto mr-5 md:mr-9 ml-2'>
           <div>
-            <img
-              alt={post.author.name}
-              height='25px'
-              width='25px'
+            <Image
+              alt='Nabarun.eth'
+              unoptimized
+              height={25}
+              width={25}
               className='align-middle rounded-full'
               src={post.author.image.url}
             />

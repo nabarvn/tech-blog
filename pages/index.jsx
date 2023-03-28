@@ -10,9 +10,9 @@ import {
 } from "../components";
 
 import FeaturedPosts from "../sections/FeaturedPosts";
-import { getPosts } from "../services";
+import { getAuthor, getPosts } from "../services";
 
-const Home = ({ posts }) => {
+const Home = ({ posts, author }) => {
   return (
     <div
       id='layout-child'
@@ -37,7 +37,7 @@ const Home = ({ posts }) => {
         <div className='col-span-1 md:col-span-6 lg:col-span-3'>
           <div className='relative md:sticky top-8'>
             <FeaturedPostsWidget />
-            <AuthorWidget />
+            <AuthorWidget author={author} />
             <PostsWidget />
             <CategoriesWidget />
             <TagsWidget />
@@ -50,9 +50,10 @@ const Home = ({ posts }) => {
 
 export const getStaticProps = async () => {
   const posts = (await getPosts()) || [];
+  const author = await getAuthor();
 
   return {
-    props: { posts },
+    props: { posts, author },
   };
 };
 
