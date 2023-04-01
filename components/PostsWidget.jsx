@@ -25,7 +25,7 @@ const PostsWidget = ({ slug, categories }) => {
           </h3>
           {widgetPosts.map((post) => (
             <div key={post.title} className='flex items-center w-full mb-4'>
-              <div className='flex-none md:hidden w-20 lg:w-16'>
+              <div className='flex-none lg:hidden w-20 lg:w-16'>
                 <img
                   alt={post.title}
                   className='align-middle rounded-full h-10 w-3/4 lg:h-9 ml-2'

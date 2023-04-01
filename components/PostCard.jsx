@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const PostCard = ({ post }) => {
   return (
-    <div className='flex flex-col bg-white dark:bg-night-gray shadow-md dark:shadow-md group transition duration-300 hover:shadow-blue-500 dark:hover:shadow-night-teal rounded-lg p-0 lg:p-5 pb-3 mb-8 lg:mb-0 hover:cursor-pointer'>
+    <div className='flex flex-col bg-white dark:bg-night-gray shadow-md dark:shadow-md group transition duration-300 hover:shadow-blue-500 dark:hover:shadow-night-teal rounded-lg p-0 md:p-5 pb-3 mb-8 md:mb-0 hover:cursor-pointer'>
       <Link href={`/post/${post.slug}`}>
         <div className='relative overflow-hidden md:shadow-md pb-48 mb-8'>
           <Image
@@ -12,12 +12,12 @@ const PostCard = ({ post }) => {
             unoptimized
             height={100}
             width={100}
-            className='absolute h-48 w-full object-cover shadow-md rounded-t-lg lg:rounded-lg'
+            className='absolute h-48 w-full object-cover shadow-md rounded-t-lg md:rounded-lg'
             src={post.thumbnail.url}
             priority
           />
         </div>
-        <h1 className='transition duration-300 text-center mb-8 cursor-pointer dark:text-night-white group-hover:text-blue-500 dark:group-hover:text-night-teal text-xl md:text-2xl font-semibold px-1 lg:px-0'>
+        <h1 className='transition duration-300 text-center mb-8 cursor-pointer dark:text-night-white group-hover:text-blue-500 dark:group-hover:text-night-teal text-xl md:text-2xl font-semibold px-1 md:px-0'>
           {/* <Link href={`/post/${post.slug}`}>{post.title}</Link> */}
           {post.title}
         </h1>
@@ -66,11 +66,11 @@ const PostCard = ({ post }) => {
         </div>
       </div>
       <Link href={`/post/${post.slug}`}>
-        <p className='text-center cursor-pointer line-clamp-3 text-base text-gray-700 dark:text-gray-300 font-normal px-4 mb-8'>
+        <p className='text-center cursor-pointer line-clamp-3 text-base text-gray-700 dark:text-gray-300 font-normal px-3 mb-8'>
           {post.excerpt}
         </p>
       </Link>
-      <div className='flex flex-wrap self-end md:hidden float-right px-3'>
+      <div className='flex flex-wrap self-end lg:hidden float-right px-3'>
         {post.tags.map((tag) => (
           <div key={tag.slug} className='text-center'>
             <Link href={`/tag/${tag.slug}`}>

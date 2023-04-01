@@ -26,16 +26,16 @@ const TagPosts = ({ posts, author }) => {
         <title>Nabarun</title>
         <link rel='icon' href={author.image.url} />
       </Head>
-      <div className='grid grid-cols-1 md:grid-cols-12 gap-12'>
-        <div className='lg:grid lg:grid-cols-8 lg:gap-7 col-span-1 md:col-span-6 lg:col-span-9 auto-rows-min'>
+      <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-7 xl:gap-12'>
+        <div className='md:grid md:grid-cols-8 md:gap-7 col-span-1 lg:col-span-9 md:auto-rows-min xl:gap-12'>
           {posts.map((post, index) => (
             <div key={index} className='flex items-stretch col-span-4'>
               <PostCard post={post.node} />
             </div>
           ))}
         </div>
-        <div className='col-span-1 md:col-span-6 lg:col-span-3'>
-          <div className='relative md:sticky top-8'>
+        <div className='col-span-1 lg:col-span-3'>
+          <div className='relative lg:sticky top-8'>
             <AuthorWidget author={author} />
             <CategoriesWidget />
             <TagsWidget />
