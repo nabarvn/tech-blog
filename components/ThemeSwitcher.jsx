@@ -31,7 +31,7 @@ const ThemeSwitcher = () => {
         <svg
           viewBox='0 0 24 24'
           fill='none'
-          className='w-4 h-4 md:w-6 md:h-6 lg:w-5 lg:h-5 xl:w-6 xl:h-6'
+          className='w-4 h-4 md:w-7 md:h-7 lg:w-6 lg:h-6 xl:w-7 xl:h-7'
         >
           <path
             fillRule='evenodd'
@@ -70,7 +70,7 @@ const ThemeSwitcher = () => {
           viewBox='0 0 24 24'
           strokeWidth={2}
           stroke='currentColor'
-          className='w-4 h-4 md:w-6 md:h-6 lg:w-5 lg:h-5 xl:w-6 xl:h-6 stroke-slate-400'
+          className='w-4 h-4 md:w-7 md:h-7 lg:w-6 lg:h-6 xl:w-7 xl:h-7 stroke-slate-400'
         >
           <path
             strokeLinecap='round'

@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className='flex justify-between border-b w-full py-3 lg:py-2 xl:py-3 px-1'>
         <div className='self-center float-start'>
           <Link href='/'>
-            <span className='cursor-pointer font-bold text-xl md:text-3xl dark:text-night-white'>
+            <span className='cursor-pointer font-bold text-2xl md:text-3xl dark:text-night-white'>
               "blog"
             </span>
           </Link>
@@ -29,10 +29,10 @@ const Navbar = () => {
           ))}
         </div> */}
         <div className='flex float-end'>
-          <div className='self-center hidden md:contents'>
+          <div className='self-end hidden md:contents'>
             <ThemeSwitcher />
           </div>
-          <div className='self-center ml-2 md:hidden'>
+          <div className='self-end ml-2 md:hidden'>
             <Dropdown />
           </div>
         </div>
