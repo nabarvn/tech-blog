@@ -30,7 +30,7 @@ const CategoryPosts = ({ posts, author }) => {
         <div className='md:grid md:grid-cols-8 md:gap-7 xl:gap-12 col-span-1 lg:col-span-9 md:auto-rows-min'>
           {posts.map((post, index) => (
             <div key={index} className='flex items-stretch col-span-4'>
-              <PostCard post={post.node} />
+              <PostCard post={post} />
             </div>
           ))}
         </div>

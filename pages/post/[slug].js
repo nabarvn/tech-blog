@@ -80,7 +80,7 @@ export const getStaticPaths = async () => {
   const posts = await getPosts();
 
   return {
-    paths: posts.map(({ node: { slug } }) => ({
+    paths: posts.map(({ slug }) => ({
       params: {
         slug,
       },
