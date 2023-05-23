@@ -12,6 +12,7 @@ export { default as Loader } from "./Loader";
 export { default as FeaturedPostsWidget } from "./FeaturedPostsWidget";
 export { default as CarouselViewer } from "./CarouselViewer";
 export { default as TagsWidget } from "./TagsWidget";
+export { default as CodeBlock } from "./CodeBlock";
 export { default as Table } from "./Table";
 export { default as AuthorWidget } from "./AuthorWidget";
 export { default as ThemeSwitcher } from "./ThemeSwitcher";
