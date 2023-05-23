@@ -1,15 +1,8 @@
-import {
-  ClipboardDocumentCheckIcon,
-  DocumentDuplicateIcon,
-} from "@heroicons/react/20/solid";
-
 import React, { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import moment from "moment";
-import { Tooltip } from "react-tooltip";
-
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { ToastContainer, toast } from "react-toastify";
+import Table from "./Table";
+import Image from "next/image";
+// import { Tooltip } from "react-tooltip";
 
 import hljs from "highlight.js";
 hljs.configure({ ignoreUnescapedHTML: true });
@@ -24,8 +17,7 @@ import scss from "highlight.js/lib/languages/scss";
 import graphql from "highlight.js/lib/languages/graphql";
 import handlebars from "highlight.js/lib/languages/handlebars";
 import python from "highlight.js/lib/languages/python";
-import Table from "./Table";
-import Image from "next/image";
+import CodeBlock from "./CodeBlock";
 
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("typescript", typescript);
@@ -40,25 +32,11 @@ hljs.registerLanguage("python", python);
 
 const PostDetails = ({ post, slug }) => {
   const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
     hljs.highlightAll();
   }, [slug]);
-
-  const successToast = () => {
-    toast.success("Copied Successfully!", {
-      position: "bottom-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme,
-    });
-  };
 
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
@@ -178,56 +156,15 @@ const PostDetails = ({ post, slug }) => {
       case "code-block":
         return (
           <div key={index} className='relative group'>
-            <Tooltip
+            {/* <Tooltip
               anchorId={index}
               content='Copy to Clipboard'
               place='bottom'
               className='dark:bg-teal-900 dark:text-night-teal'
-            />
+            /> */}
+
             {modifiedText.map((item, i) => {
-              const [copied, setCopied] = useState(false);
-              const snippetCopy = item;
-
-              const copySuccess = () => {
-                setCopied(true);
-
-                setTimeout(() => {
-                  setCopied(false);
-                }, 3000);
-              };
-
-              return (
-                <React.Fragment key={i}>
-                  <div className='border-2 bg-code-block text-night-white text-base rounded-lg p-3 pt-2 mb-8'>
-                    <pre>
-                      <code className='block overflow-auto scrollbar-thin scrollbar-track-rounded-lg scrollbar-track-night-gray scrollbar-thumb-rounded-lg scrollbar-thumb-blue-900 dark:scrollbar-thumb-night-blue'>
-                        {item}
-                      </code>
-                    </pre>
-                  </div>
-
-                  <CopyToClipboard text={snippetCopy} onCopy={successToast}>
-                    <button
-                      id={index}
-                      className='absolute opacity-0 top-2 right-2 hover:bg-[#1d3b53fc] transition-opacity duration-300 group-hover:opacity-100 rounded-lg p-1'
-                      onClick={copySuccess}
-                    >
-                      <DocumentDuplicateIcon
-                        className={`${
-                          copied && "hidden"
-                        } h-5 w-5 text-night-teal`}
-                        aria-hidden='false'
-                      />
-                      <ClipboardDocumentCheckIcon
-                        className={`${
-                          !copied && "hidden"
-                        } h-5 w-5 text-night-teal`}
-                        aria-hidden='false'
-                      />
-                    </button>
-                  </CopyToClipboard>
-                </React.Fragment>
-              );
+              return <CodeBlock key={i} item={item} />;
             })}
           </div>
         );
@@ -518,18 +455,6 @@ const PostDetails = ({ post, slug }) => {
           })}
         </div>
       </div>
-      <ToastContainer
-        position='bottom-center'
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme
-      />
     </>
   );
 };
