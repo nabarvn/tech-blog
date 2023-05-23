@@ -1,7 +1,7 @@
 import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getLatestPosts, getSimilarPosts } from "../services";
+import { getOldestPosts, getSimilarPosts } from "../services";
 
 const PostsWidget = ({ slug, categories }) => {
   const [widgetPosts, setWidgetPosts] = useState([]);
@@ -12,7 +12,7 @@ const PostsWidget = ({ slug, categories }) => {
         setWidgetPosts(result)
       );
     } else {
-      getLatestPosts().then((result) => setWidgetPosts(result));
+      getOldestPosts().then((result) => setWidgetPosts(result));
     }
   }, [slug]);
 
@@ -21,7 +21,7 @@ const PostsWidget = ({ slug, categories }) => {
       {widgetPosts.length > 0 && (
         <div className='bg-white dark:bg-night-gray shadow-md rounded-lg p-8 lg:p-6 mb-8'>
           <h3 className='text-xl mb-8 lg:mb-6 font-semibold cursor-default dark:text-night-white border-b pb-4'>
-            {slug ? "Similar Articles" : "Latest Articles"}
+            {slug ? "Similar Articles" : "For Starters"}
           </h3>
           {widgetPosts.map((post) => (
             <div key={post.title} className='flex items-center w-full mb-4'>
