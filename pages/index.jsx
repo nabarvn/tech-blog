@@ -26,11 +26,8 @@ const Home = ({ posts, author }) => {
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-7 xl:gap-12'>
         <div className='md:grid md:grid-cols-8 md:gap-7 md:auto-rows-min xl:gap-12 col-span-1 lg:col-span-9'>
           {posts.map((post) => (
-            <div
-              key={post.node.title}
-              className='flex items-stretch col-span-4'
-            >
-              <PostCard post={post.node} />
+            <div key={post.title} className='flex items-stretch col-span-4'>
+              <PostCard post={post} />
             </div>
           ))}
         </div>
