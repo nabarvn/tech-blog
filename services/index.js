@@ -5,42 +5,30 @@ const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 export const getPosts = async () => {
   const query = gql`
     query GetPosts {
-      assets {
-        createdAt
+      posts(orderBy: createdAt_DESC) {
         id
-        publishedAt
-        fileName
-        url
-        updatedAt
-      }
-      postsConnection {
-        edges {
-          node {
-            author {
-              bio
-              name
-              id
-              image {
-                url
-              }
-            }
-            createdAt
-            id
-            slug
-            title
-            excerpt
-            thumbnail {
-              url
-            }
-            categories {
-              name
-              slug
-            }
-            tags {
-              name
-              slug
-            }
+        slug
+        title
+        createdAt
+        excerpt
+        author {
+          id
+          name
+          bio
+          image {
+            url
           }
+        }
+        thumbnail {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+        tags {
+          name
+          slug
         }
       }
     }
@@ -48,7 +36,7 @@ export const getPosts = async () => {
 
   const result = await request(graphqlAPI, query);
 
-  return result.postsConnection.edges;
+  return result.posts;
 };
 
 export const getPostDetails = async (slug) => {
@@ -90,11 +78,11 @@ export const getPostDetails = async (slug) => {
   return result.post;
 };
 
-export const getLatestPosts = async () => {
+export const getOldestPosts = async () => {
   const query = gql`
-    query GetLatestPosts() {
+    query GetOldestPosts() {
       posts(
-        orderBy: createdAt_DESC 
+        orderBy: createdAt_ASC
         first: 3
       ) {
         title
@@ -191,34 +179,33 @@ export const getAuthor = async () => {
 export const getCategoryPosts = async (slug) => {
   const query = gql`
     query GetCategoryPosts($slug: String!) {
-      postsConnection(where: { categories_some: { slug: $slug } }) {
-        edges {
-          cursor
-          node {
-            author {
-              bio
-              name
-              id
-              image {
-                url
-              }
-            }
-            createdAt
-            slug
-            title
-            excerpt
-            thumbnail {
-              url
-            }
-            categories {
-              name
-              slug
-            }
-            tags {
-              name
-              slug
-            }
+      posts(
+        where: { categories_some: { slug: $slug } }
+        orderBy: createdAt_DESC
+      ) {
+        id
+        slug
+        title
+        createdAt
+        excerpt
+        author {
+          id
+          name
+          bio
+          image {
+            url
           }
+        }
+        thumbnail {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+        tags {
+          name
+          slug
         }
       }
     }
@@ -226,40 +213,36 @@ export const getCategoryPosts = async (slug) => {
 
   const result = await request(graphqlAPI, query, { slug });
 
-  return result.postsConnection.edges;
+  return result.posts;
 };
 
 export const getTagPosts = async (slug) => {
   const query = gql`
     query GetTagPosts($slug: String!) {
-      postsConnection(where: { tags_some: { slug: $slug } }) {
-        edges {
-          cursor
-          node {
-            author {
-              bio
-              name
-              id
-              image {
-                url
-              }
-            }
-            createdAt
-            slug
-            title
-            excerpt
-            thumbnail {
-              url
-            }
-            categories {
-              name
-              slug
-            }
-            tags {
-              name
-              slug
-            }
+      posts(where: { tags_some: { slug: $slug } }, orderBy: createdAt_DESC) {
+        id
+        slug
+        title
+        createdAt
+        excerpt
+        author {
+          id
+          name
+          bio
+          image {
+            url
           }
+        }
+        thumbnail {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+        tags {
+          name
+          slug
         }
       }
     }
@@ -267,7 +250,7 @@ export const getTagPosts = async (slug) => {
 
   const result = await request(graphqlAPI, query, { slug });
 
-  return result.postsConnection.edges;
+  return result.posts;
 };
 
 export const submitComment = async (obj) => {
@@ -302,6 +285,9 @@ export const getFeaturedPosts = async () => {
   const query = gql`
     query GetFeaturedPosts() {
       posts(where: {featuredPost: true}) {
+        title
+        slug
+        createdAt
         author {
           name
           image {
@@ -311,9 +297,6 @@ export const getFeaturedPosts = async () => {
         thumbnail {
           url
         }
-        title
-        slug
-        createdAt
       }
     }   
   `;
