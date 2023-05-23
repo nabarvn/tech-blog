@@ -8,13 +8,13 @@ const PostCard = ({ post }) => {
       <Link href={`/post/${post.slug}`}>
         <div className='relative overflow-hidden md:shadow-md pb-48 mb-8'>
           <Image
-            alt={post.title}
+            priority
             unoptimized
+            alt={post.title}
             height={100}
             width={100}
             className='absolute h-48 w-full object-cover shadow-md rounded-t-lg md:rounded-lg'
             src={post.thumbnail.url}
-            priority
           />
         </div>
         <h1 className='transition duration-300 text-center mb-8 cursor-pointer dark:text-night-white group-hover:text-blue-500 dark:group-hover:text-night-teal text-xl md:text-2xl font-semibold px-1 md:px-0'>
