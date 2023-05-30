@@ -17,6 +17,7 @@ const PostCard = ({ post }) => {
             src={post.thumbnail.url}
           />
         </div>
+
         <h1 className='transition duration-300 text-center mb-8 cursor-pointer dark:text-night-white group-hover:text-blue-500 dark:group-hover:text-night-teal text-xl md:text-2xl font-semibold px-1 md:px-0'>
           {/* <Link href={`/post/${post.slug}`}>{post.title}</Link> */}
           {post.title}
@@ -35,12 +36,14 @@ const PostCard = ({ post }) => {
               src={post.author.image.url}
             />
           </div>
+
           <div>
             <p className='inline align-middle cursor-default text-gray-700 dark:text-night-teal ml-2 font-medium text-base'>
               {post.author.name}
             </p>
           </div>
         </div>
+
         <div className='flex flex-wrap items-center font-medium text-base text-gray-700 dark:text-night-teal mb-4 md:mb-0 mr-2'>
           <div>
             <svg
@@ -58,6 +61,7 @@ const PostCard = ({ post }) => {
               />
             </svg>
           </div>
+
           <div>
             <span className='align-middle cursor-default'>
               {moment(post.createdAt).format("MMM DD, YYYY")}
@@ -65,11 +69,13 @@ const PostCard = ({ post }) => {
           </div>
         </div>
       </div>
+
       <Link href={`/post/${post.slug}`}>
         <p className='text-center cursor-pointer line-clamp-3 text-base text-gray-700 dark:text-gray-300 font-normal px-3 mb-8'>
           {post.excerpt}
         </p>
       </Link>
+
       <div className='flex flex-wrap self-end lg:hidden float-right px-3'>
         {post.tags.map((tag) => (
           <div key={tag.slug} className='text-center'>

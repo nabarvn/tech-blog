@@ -26,6 +26,7 @@ const CategoryPosts = ({ posts, author }) => {
         <title>Nabarun</title>
         <link rel='icon' href={author.image.url} />
       </Head>
+
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-7 xl:gap-12'>
         <div className='md:grid md:grid-cols-8 md:gap-7 xl:gap-12 col-span-1 lg:col-span-9 md:auto-rows-min'>
           {posts.map((post, index) => (
@@ -34,6 +35,7 @@ const CategoryPosts = ({ posts, author }) => {
             </div>
           ))}
         </div>
+
         <div className='col-span-1 lg:col-span-3'>
           <div className='relative lg:sticky top-8'>
             <AuthorWidget author={author} />

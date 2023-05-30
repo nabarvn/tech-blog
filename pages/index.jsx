@@ -22,7 +22,9 @@ const Home = ({ posts, author }) => {
         <title>Nabarun</title>
         <link rel='icon' href={author.image.url} />
       </Head>
+
       <FeaturedPosts />
+
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-7 xl:gap-12'>
         <div className='md:grid md:grid-cols-8 md:gap-7 md:auto-rows-min xl:gap-12 col-span-1 lg:col-span-9'>
           {posts.map((post) => (
@@ -31,6 +33,7 @@ const Home = ({ posts, author }) => {
             </div>
           ))}
         </div>
+
         <div className='col-span-1 lg:col-span-3'>
           <div className='relative lg:sticky top-8'>
             <FeaturedPostsWidget />

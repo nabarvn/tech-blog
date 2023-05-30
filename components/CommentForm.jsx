@@ -117,6 +117,7 @@ const CommentForm = ({ slug }) => {
       <h3 className='text-xl mb-8 font-semibold cursor-default dark:text-night-white border-b pb-4'>
         Say gm?
       </h3>
+
       <div className='grid grid-cols-1 gap-4 mb-4'>
         <label className='relative cursor-pointer'>
           <textarea
@@ -130,6 +131,7 @@ const CommentForm = ({ slug }) => {
             autoComplete='off'
             required
           />
+
           <span
             className={`text-lg text-gray-700 dark:text-gray-300 ${
               commentError && "text-red-500 dark:text-red-500"
@@ -139,6 +141,7 @@ const CommentForm = ({ slug }) => {
           </span>
         </label>
       </div>
+
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4'>
         <label className='relative cursor-pointer'>
           <input
@@ -152,6 +155,7 @@ const CommentForm = ({ slug }) => {
             autoComplete='off'
             required
           />
+
           <span
             className={`text-lg text-gray-700 dark:text-gray-300 ${
               nameError && "text-red-500 dark:text-red-500"
@@ -160,6 +164,7 @@ const CommentForm = ({ slug }) => {
             Name*
           </span>
         </label>
+
         <label className='relative cursor-pointer'>
           <input
             type='text'
@@ -172,6 +177,7 @@ const CommentForm = ({ slug }) => {
             autoComplete='off'
             required
           />
+
           <span
             className={`text-lg text-gray-700 dark:text-gray-300 ${
               emailError && "text-red-500 dark:text-red-500"
@@ -181,6 +187,7 @@ const CommentForm = ({ slug }) => {
           </span>
         </label>
       </div>
+
       <div className='flex mb-4'>
         <input
           ref={storeDataRef}
@@ -190,6 +197,7 @@ const CommentForm = ({ slug }) => {
           name='storeData'
           className='cursor-pointer h-3 w-3 md:self-center dark:accent-indigo-500 mt-1.5 md:mt-0.5'
         />
+
         <label
           className='text-base lg:text-lg self-center text-gray-700 dark:text-gray-300 cursor-pointer ml-2'
           htmlFor='storeData'
@@ -197,6 +205,7 @@ const CommentForm = ({ slug }) => {
           Save my e-mail and name for the next time I comment.
         </label>
       </div>
+
       <div className='mt-8 pb-2'>
         <button
           type='button'
@@ -205,22 +214,26 @@ const CommentForm = ({ slug }) => {
         >
           Submit
         </button>
+
         {showSuccessMessage && !emailError && (
           <span className='text-sm float-left md:float-right font-semibold text-green-500 dark:text-night-teal mt-3'>
             Comment submitted for review.
           </span>
         )}
+
         {error && (
           <span className='absolute bottom-3 md:bottom-2 left-8 text-sm font-semibold text-red-500'>
             *All fields are required.
           </span>
         )}
+
         {emailError && !error && (
           <span className='absolute bottom-3 md:bottom-2 left-8 text-sm font-semibold text-red-500'>
             Please input a valid email address.
           </span>
         )}
       </div>
+
       <ToastContainer
         position='bottom-center'
         autoClose={1000}

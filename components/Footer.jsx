@@ -14,6 +14,7 @@ const Footer = () => {
             <RxTwitterLogo className='text-twitter-blue dark:text-slate-400 h-5 w-5' />
           </a>
         </div>
+
         <div
           id='github-logo'
           className='cursor-pointer bg-light-gray dark:bg-night-black hover:bg-gray-100 dark:hover:bg-night-gray transition duration-300 rounded-lg p-1.5 md:p-2'
@@ -22,6 +23,7 @@ const Footer = () => {
             <RxGithubLogo className='text-github-black dark:text-slate-400 h-5 w-5' />
           </a>
         </div>
+
         <div
           id='linkedin-logo'
           className='cursor-pointer bg-light-gray dark:bg-night-black hover:bg-gray-100 dark:hover:bg-night-gray transition duration-300 rounded-lg p-1.5 md:p-2'
@@ -35,6 +37,7 @@ const Footer = () => {
         <Tooltip anchorId='github-logo' content='Github' place='top' />
         <Tooltip anchorId='linkedin-logo' content='Linkedin' place='top' />
       </div>
+
       <div className='p-1'>
         <Link
           href='https://github.com/nabarvn/blogsite'
@@ -44,6 +47,7 @@ const Footer = () => {
           Open Source Project
         </Link>
       </div>
+
       <div className='p-1'>
         <span className='cursor-default'>Built and Powered with ❤️</span>
       </div>

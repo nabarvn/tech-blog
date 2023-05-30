@@ -1,13 +1,13 @@
+import Link from "next/link";
 import { Fragment, useState, useEffect, useRef } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import Link from "next/link";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 import {
   HomeIcon,
   ChevronDownIcon,
   ArrowLongRightIcon,
 } from "@heroicons/react/20/solid";
-import ThemeSwitcher from "./ThemeSwitcher";
 
 const classNames = (...classes) => {
   return classes.filter(Boolean).join(" ");
@@ -85,6 +85,7 @@ const Dropdown = () => {
               )}
             </Menu.Item>
           </div>
+
           <div className='py-1'>
             <Menu.Item>
               {({ active }) => (
@@ -102,6 +103,7 @@ const Dropdown = () => {
                 </Link>
               )}
             </Menu.Item>
+
             <Menu.Item>
               {({ active }) => (
                 <Link
@@ -118,6 +120,7 @@ const Dropdown = () => {
                 </Link>
               )}
             </Menu.Item>
+
             <Menu.Item>
               {({ active }) => (
                 <Link
@@ -135,6 +138,7 @@ const Dropdown = () => {
               )}
             </Menu.Item>
           </div>
+
           <div
             className='inline-flex w-full justify-between text-md text-gray-700 dark:text-night-white px-4 py-2'
             onClick={() => setMenuOpen(!menuOpen)}

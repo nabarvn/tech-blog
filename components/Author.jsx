@@ -16,6 +16,7 @@ const Author = ({ author }) => {
           />
         </Link>
       </div>
+
       <div className='my-4'>
         <Link
           href='https://nabarun.xyz'
@@ -24,6 +25,7 @@ const Author = ({ author }) => {
           {author.name}
         </Link>
       </div>
+
       <p className='cursor-default text-base'>{author.bio}</p>
     </div>
   );

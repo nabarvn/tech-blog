@@ -400,6 +400,7 @@ const PostDetails = ({ post, slug }) => {
             priority
           />
         </div>
+
         <div className='px-4 lg:px-0'>
           <div className='flex flex-wrap items-center justify-center mb-8 w-full'>
             <div className='flex flex-wrap items-center mb-4 md:mb-0 md:w-auto mr-5 md:mr-9'>
@@ -413,12 +414,14 @@ const PostDetails = ({ post, slug }) => {
                   src={post.author.image.url}
                 />
               </div>
+
               <div>
                 <p className='inline align-middle cursor-default text-gray-700 dark:text-night-teal ml-2 text-base md:text-lg'>
                   {post.author.name}
                 </p>
               </div>
             </div>
+
             <div className='flex flex-wrap items-center text-gray-700 dark:text-night-teal mb-4 md:mb-0 text-base md:text-lg'>
               <div className='md:mb-1'>
                 <svg
@@ -436,6 +439,7 @@ const PostDetails = ({ post, slug }) => {
                   />
                 </svg>
               </div>
+
               <div>
                 <span className='align-middle cursor-default'>
                   {moment(post.createdAt).format("MMM DD, YYYY")}
@@ -443,9 +447,11 @@ const PostDetails = ({ post, slug }) => {
               </div>
             </div>
           </div>
+
           <h1 className='mb-8 text-2xl md:text-3xl text-center font-semibold cursor-default dark:text-night-white'>
             {post.title}
           </h1>
+
           {post.content.raw.children.map((typeObj, index) => {
             const children = typeObj.children.map((item, itemIndex) =>
               getContentFragment(itemIndex, item.text, item)

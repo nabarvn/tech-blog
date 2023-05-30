@@ -6,6 +6,7 @@ const FeaturedPostsWidget = () => {
       <h3 className='text-xl mb-8 font-semibold dark:text-night-white border-b pb-4'>
         Featured Articles
       </h3>
+
       <CarouselViewer />
     </div>
   );

@@ -34,6 +34,7 @@ const ScrollToTop = () => {
         place='top'
         className={`${!isVisible && "hidden"}`}
       />
+
       <button
         id='scroll-to-top'
         type='button'

@@ -19,6 +19,7 @@ const Comments = ({ slug }) => {
               ? `${comments.length} Comments`
               : `${comments.length} Comment`}
           </h3>
+
           {comments.map((comment) => (
             <div
               key={comment.createdAt}
@@ -30,6 +31,7 @@ const Comments = ({ slug }) => {
                 </span>
                 {` on ${moment(comment.createdAt).format("MMM DD, YYYY")}`}
               </p>
+
               <p className='whitespace-pre-line cursor-default text-gray-700 dark:text-gray-300 w-full'>
                 {parse(comment.comment)}
               </p>

@@ -31,6 +31,7 @@ const Post = ({ post }) => {
         <title>Nabarun</title>
         <link rel='icon' href={post.author.image.url} />
       </Head>
+
       <div className='mb-2 ml-2'>
         <Link
           href='/'
@@ -40,6 +41,7 @@ const Post = ({ post }) => {
           {`< Back`}
         </Link>
       </div>
+
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
         <div className='col-span-1 lg:col-span-8'>
           <PostDetails post={post} slug={post.slug} />
@@ -47,6 +49,7 @@ const Post = ({ post }) => {
           <CommentForm slug={post.slug} />
           <Comments slug={post.slug} />
         </div>
+
         <div className='col-span-1 lg:col-span-4'>
           <div className='relative lg:sticky top-8'>
             <PostsWidget

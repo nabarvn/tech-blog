@@ -19,6 +19,7 @@ const Navbar = () => {
             </span>
           </Link>
         </div>
+
         {/* <div className='hidden md:float-left md:contents'>
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
@@ -28,10 +29,12 @@ const Navbar = () => {
             </Link>
           ))}
         </div> */}
+
         <div className='flex float-end'>
           <div className='self-end hidden md:contents'>
             <ThemeSwitcher />
           </div>
+
           <div className='self-end ml-2 md:hidden'>
             <Dropdown />
           </div>

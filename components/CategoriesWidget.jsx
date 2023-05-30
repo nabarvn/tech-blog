@@ -9,6 +9,7 @@ const CategoriesWidget = () => {
       <h3 className='text-xl mb-8 lg:mb-6 font-semibold cursor-default dark:text-night-white border-b pb-4'>
         Categories
       </h3>
+
       {categories.map((category) => (
         <div
           key={category.slug}
