@@ -40,7 +40,7 @@ const Footer = () => {
 
       <div className='p-1'>
         <Link
-          href='https://github.com/nabarvn/blogsite'
+          href='https://github.com/nabarvn/tech-blog'
           className='hover:text-blue-500 dark:hover:text-indigo-400'
           target='_blank'
         >
